@@ -1,0 +1,28 @@
+apiVersion: v1
+entries:
+  code-server:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-09-05T08:57:31.24752429Z"
+    description: A Helm chart to deploy VisualStudio Code server on Kubernetes and
+      OpenShift
+    digest: 193bbab44e7c987be9207876dc0eb5a556d7fc11d1170686cecba79888310b71
+    icon: https://code.visualstudio.com/assets/images/code-stable.png
+    name: code-server
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/code-server-0.1.1/code-server-0.1.1.tgz
+    version: 0.1.1
+  jupyterlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-09-05T08:57:31.356469387Z"
+    description: A Helm chart for JupyterLab on Kubernetes and OpenShift
+    digest: e07f3d3584ce894184dd99db4efcfa14001895c888bda1fa13a4bc58868a2b8e
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
+    name: jupyterlab
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.1/jupyterlab-0.1.1.tgz
+    version: 0.1.1
+generated: "2021-09-05T08:57:31.356473787Z"
