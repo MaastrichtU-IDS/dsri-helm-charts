@@ -5,35 +5,35 @@ metadata:
   labels:
     {{- include "code-server.labels" . | nindent 4 }}
 spec:
-# {{- if not .Values.autoscaling.enabled }}
+{{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-# {{- end }}
+{{- end }}
   selector:
     matchLabels:
       {{- include "code-server.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-    # {{- with .Values.podAnnotations }}
-    #   annotations:
-    #     {{- toYaml . | nindent 8 }}
-    # {{- end }}
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
       labels:
         {{- include "code-server.selectorLabels" . | nindent 8 }}
     spec:
-      # {{- with .Values.imagePullSecrets }}
-      # imagePullSecrets:
-      #   {{- toYaml . | nindent 8 }}
-      # {{- end }}
-      serviceAccountName: {{ .Values.serviceAccount.name }}
-      # securityContext:
-      #   {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "code-server.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          # securityContext:
-          #   {{- toYaml .Values.securityContext | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          # workingDir: {{ .Values.storage.mountPath }}
+          workingDir: {{ .Values.storage.mountPath }}
           env:
             - name: PASSWORD
               valueFrom:
@@ -44,8 +44,7 @@ spec:
               value: {{ .Values.gitUrl }}
           ports:
             - name: http
-              # containerPort: {{ .Values.service.port }}
-              containerPort: 8080
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -55,29 +54,29 @@ spec:
             httpGet:
               path: /
               port: http
-          # resources:
-          #   {{- toYaml .Values.resources | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
-            # - name: dshm
-            #   mountPath: /dev/shm
+            - name: dshm
+              mountPath: /dev/shm
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "code-server.fullname" . }}
-        # - name: dshm
-        #   emptyDir:
-        #     medium: Memory
-      # {{- with .Values.nodeSelector }}
-      # nodeSelector:
-      #   {{- toYaml . | nindent 8 }}
-      # {{- end }}
-      # {{- with .Values.affinity }}
-      # affinity:
-      #   {{- toYaml . | nindent 8 }}
-      # {{- end }}
-      # {{- with .Values.tolerations }}
-      # tolerations:
-      #   {{- toYaml . | nindent 8 }}
-      # {{- end }}
+        - name: dshm
+          emptyDir:
+            medium: Memory
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
