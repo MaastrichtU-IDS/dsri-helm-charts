@@ -1,333 +1,37 @@
 {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Welcome3",
-    "definitions": {
-        "Welcome3": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "password": {
-                    "type": "string"
-                },
-                "gitUrl": {
-                    "type": "string",
-                    "format": "uri",
-                    "qt-uri-protocols": [
-                        "https"
-                    ]
-                },
-                "image": {
-                    "$ref": "#/definitions/Image"
-                },
-                "serviceAccount": {
-                    "$ref": "#/definitions/ServiceAccount"
-                },
-                "service": {
-                    "$ref": "#/definitions/Welcome3Service"
-                },
-                "openshiftRoute": {
-                    "$ref": "#/definitions/OpenshiftRoute"
-                },
-                "ingress": {
-                    "$ref": "#/definitions/Ingress"
-                },
-                "imagePullSecrets": {
-                    "type": "array",
-                    "items": {}
-                },
-                "nameOverride": {
-                    "type": "string"
-                },
-                "fullnameOverride": {
-                    "type": "string"
-                },
-                "replicaCount": {
-                    "type": "integer"
-                },
-                "podAnnotations": {
-                    "$ref": "#/definitions/Affinity"
-                },
-                "podSecurityContext": {
-                    "$ref": "#/definitions/Affinity"
-                },
-                "securityContext": {
-                    "$ref": "#/definitions/Affinity"
-                },
-                "resources": {
-                    "$ref": "#/definitions/Affinity"
-                },
-                "autoscaling": {
-                    "$ref": "#/definitions/Autoscaling"
-                },
-                "nodeSelector": {
-                    "$ref": "#/definitions/Affinity"
-                },
-                "tolerations": {
-                    "type": "array",
-                    "items": {}
-                },
-                "affinity": {
-                    "$ref": "#/definitions/Affinity"
-                }
-            },
-            "required": [
-                "affinity",
-                "autoscaling",
-                "fullnameOverride",
-                "gitUrl",
-                "image",
-                "imagePullSecrets",
-                "ingress",
-                "nameOverride",
-                "nodeSelector",
-                "openshiftRoute",
-                "password",
-                "podAnnotations",
-                "podSecurityContext",
-                "replicaCount",
-                "resources",
-                "securityContext",
-                "service",
-                "serviceAccount",
-                "tolerations"
-            ],
-            "title": "Welcome3"
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties": {
+    "password": {
+      "type": "string"
+    },
+    "gitUrl": {
+      "type": "string",
+      "format": "uri",
+      "qt-uri-protocols": [
+          "https"
+      ]
+    },
+    "image": {
+      "description": "Container Image",
+      "properties": {
+        "repository": {
+          "type": "string"
         },
-        "Affinity": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Affinity"
-        },
-        "Autoscaling": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                },
-                "minReplicas": {
-                    "type": "integer"
-                },
-                "maxReplicas": {
-                    "type": "integer"
-                },
-                "targetCPUUtilizationPercentage": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "enabled",
-                "maxReplicas",
-                "minReplicas",
-                "targetCPUUtilizationPercentage"
-            ],
-            "title": "Autoscaling"
-        },
-        "Image": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "repository": {
-                    "type": "string"
-                },
-                "tag": {
-                    "type": "string"
-                },
-                "pullPolicy": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "pullPolicy",
-                "repository",
-                "tag"
-            ],
-            "title": "Image"
-        },
-        "Ingress": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                },
-                "annotations": {
-                    "$ref": "#/definitions/Affinity"
-                },
-                "hosts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Host"
-                    }
-                },
-                "tls": {
-                    "type": "array",
-                    "items": {}
-                }
-            },
-            "required": [
-                "annotations",
-                "enabled",
-                "hosts",
-                "tls"
-            ],
-            "title": "Ingress"
-        },
-        "Host": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "host": {
-                    "type": "string"
-                },
-                "paths": {
-                    "type": "array",
-                    "items": {}
-                }
-            },
-            "required": [
-                "host",
-                "paths"
-            ],
-            "title": "Host"
-        },
-        "OpenshiftRoute": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                },
-                "host": {
-                    "type": "string"
-                },
-                "path": {
-                    "type": "string"
-                },
-                "wildcardPolicy": {
-                    "type": "string"
-                },
-                "nameOverride": {
-                    "type": "string"
-                },
-                "fullnameOverride": {
-                    "type": "string"
-                },
-                "tls": {
-                    "$ref": "#/definitions/TLS"
-                },
-                "service": {
-                    "$ref": "#/definitions/OpenshiftRouteService"
-                },
-                "alternateBackends": {
-                    "type": "array",
-                    "items": {}
-                }
-            },
-            "required": [
-                "alternateBackends",
-                "enabled",
-                "fullnameOverride",
-                "host",
-                "nameOverride",
-                "path",
-                "service",
-                "tls",
-                "wildcardPolicy"
-            ],
-            "title": "OpenshiftRoute"
-        },
-        "OpenshiftRouteService": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "targetPort": {
-                    "type": "string"
-                },
-                "weight": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "targetPort",
-                "weight"
-            ],
-            "title": "OpenshiftRouteService"
-        },
-        "TLS": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                },
-                "termination": {
-                    "type": "string"
-                },
-                "insecureEdgeTerminationPolicy": {
-                    "type": "string"
-                },
-                "key": {
-                    "type": "null"
-                },
-                "certificate": {
-                    "type": "null"
-                },
-                "caCertificate": {
-                    "type": "null"
-                },
-                "destinationCACertificate": {
-                    "type": "null"
-                }
-            },
-            "required": [
-                "caCertificate",
-                "certificate",
-                "destinationCACertificate",
-                "enabled",
-                "insecureEdgeTerminationPolicy",
-                "key",
-                "termination"
-            ],
-            "title": "TLS"
-        },
-        "Welcome3Service": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "port",
-                "type"
-            ],
-            "title": "Welcome3Service"
-        },
-        "ServiceAccount": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "create": {
-                    "type": "boolean"
-                },
-                "annotations": {
-                    "$ref": "#/definitions/Affinity"
-                }
-            },
-            "required": [
-                "annotations",
-                "create",
-                "name"
-            ],
-            "title": "ServiceAccount"
+        "tag": {
+          "type": "string"
         }
+      },
+      "type": "object"
+    },
+    "name": {
+      "description": "Application name",
+      "type": "string"
     }
+  },
+  "required": [
+    "password",
+    "port"
+  ],
+  "title": "Values",
+  "type": "object"
 }
