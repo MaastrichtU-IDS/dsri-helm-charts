@@ -39,11 +39,11 @@ spec:
                   key: application-password
                   name: {{ include "rstudio.fullname" . }}
             - name: USER
-              value: "rstudio"
+              value: {{ .Values.username }}
             - name: ROOT
               value: "TRUE"
             - name: OPENBLAS_NUM_THREADS
-              value: "{{ .Values.openblasNumThreads }}"
+              value: {{ .Values.openblasNumThreads }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

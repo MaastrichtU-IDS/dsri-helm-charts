@@ -6,13 +6,17 @@
   ],
   "properties": {
       "password": {
-        "$id": "#/properties/password",
         "type": "string",
-        "title": "Web UI Password",
+        "title": "RStudio password",
         "description": "Password to access the web interface"
       },
+      "username": {
+        "type": "string",
+        "title": "RStudio user",
+        "description": "Username inside RStudio (usually keep rstudio)"
+      },
       "openblasNumThreads": {
-        "type": "integer",
+        "type": "string",
         "title": "Number of threads for OpenBLAS",
         "description": "Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64)."
       },

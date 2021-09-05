@@ -1,10 +1,10 @@
 # rstudio
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
 
 A Helm chart to deploy RStudio on Kubernetes and OpenShift
 
-🐳 Available images with this template:
+Available images with this template:
 bioconductor/bioconductor_docker:devel
 rocker/rstudio
 rocker/tidyverse
@@ -61,7 +61,7 @@ The following table lists the configurable parameters of the rstudio chart and t
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
-| openblasNumThreads | int | `1` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
+| openblasNumThreads | string | `"1"` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
 | openshiftRoute.enabled | bool | `true` |  |
 | openshiftRoute.host | string | `""` |  |
 | openshiftRoute.path | string | `""` |  |
@@ -81,13 +81,14 @@ The following table lists the configurable parameters of the rstudio chart and t
 | serviceAccount.name | string | `"anyuid"` |  |
 | storage.mountPath | string | `"/home/rstudio"` |  |
 | storage.size | string | `"5Gi"` |  |
-| tolerations | list | `[]` |  |# rstudio
+| tolerations | list | `[]` |  |
+| username | string | `"rstudio"` |  |# rstudio
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
 
 A Helm chart to deploy RStudio on Kubernetes and OpenShift
 
-🐳 Available images with this template:
+Available images with this template:
 bioconductor/bioconductor_docker:devel
 rocker/rstudio
 rocker/tidyverse
@@ -123,7 +124,7 @@ Visit https://github.com/MaastrichtU-IDS/rstudio for more details to build and c
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
-| openblasNumThreads | int | `1` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
+| openblasNumThreads | string | `"1"` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
 | openshiftRoute.enabled | bool | `true` |  |
 | openshiftRoute.host | string | `""` |  |
 | openshiftRoute.path | string | `""` |  |
@@ -144,4 +145,5 @@ Visit https://github.com/MaastrichtU-IDS/rstudio for more details to build and c
 | storage.mountPath | string | `"/home/rstudio"` |  |
 | storage.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |
+| username | string | `"rstudio"` |  |
 

@@ -3,10 +3,11 @@
 
 # Password to access the web interface
 password: ""
+username: "rstudio"
 
 # Number of threads for OpenBLAS
 # Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64)
-openblasNumThreads: 1
+openblasNumThreads: "1"
 
 storage:
   size: 5Gi
