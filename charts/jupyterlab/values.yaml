@@ -2,17 +2,13 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+password: CHANGEME
+# gitUrl: 
 
 image:
   repository: ghcr.io/maastrichtu-ids/jupyterlab
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+  pullPolicy: IfNotPresent
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -22,11 +18,6 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: "anyuid"
-
-podAnnotations: {}
-
-podSecurityContext: {}
-  # fsGroup: 2000
 
 securityContext: 
   runAsUser: 0
@@ -78,6 +69,12 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -102,3 +99,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
