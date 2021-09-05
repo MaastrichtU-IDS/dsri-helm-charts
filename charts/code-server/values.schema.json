@@ -8,19 +8,19 @@
       "password": {
         "$id": "#/properties/password",
         "type": "string",
-        "title": "Password",
-        "description": "Password of the web interface"
+        "title": "Web UI Password",
+        "description": "Password to access the web interface"
       },
       "gitUrl": {
         "type": "string",
-        "title": "Git repository URL",
-        "description": "URL of a git repository to clone in the workspace (optional)"
+        "title": "Git repository URL (optional)",
+        "description": "URL of a git repository to clone in the workspace."
       },
       "storage": {
           "$id": "#/properties/storage",
           "type": "object",
           "title": "Persistent storage",
-          "description": "Persistent storage configuration",
+          "description": "Configure the persistent volume to store your data.",
           "required": [
               "size",
               "mountPath"
@@ -45,7 +45,7 @@
           "$id": "#/properties/image",
           "type": "object",
           "title": "Docker image",
-          "description": "Configuration of the Docker image to use.",
+          "description": "Configure the Docker image to use.",
           "required": [
               "repository",
               "tag",
@@ -76,8 +76,8 @@
       "serviceAccount": {
           "$id": "#/properties/serviceAccount",
           "type": "object",
-          "title": "Service Account",
-          "description": "Configuration of the service account",
+          "title": "Service Account configuration",
+          "description": "Configure the Kubernetes service account running the application",
           "required": [
               "name",
               "create"
@@ -107,6 +107,7 @@
           "$id": "#/properties/service",
           "type": "object",
           "title": "Service configuration",
+          "description": "Configure the service on which the application will run (port)",
           "required": [
               "type",
               "port"
