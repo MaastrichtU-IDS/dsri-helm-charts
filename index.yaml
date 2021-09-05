@@ -496,4 +496,33 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.1/jupyterlab-0.1.1.tgz
     version: 0.1.1
-generated: "2021-09-05T20:52:59.506329578Z"
+  rstudio:
+  - apiVersion: v2
+    appVersion: 3.2.0
+    created: "2021-09-05T21:05:48.134615962Z"
+    description: "A Helm chart to deploy RStudio on Kubernetes and OpenShift  \U0001F433
+      Available images with this template: bioconductor/bioconductor_docker:devel
+      rocker/rstudio rocker/tidyverse ghcr.io/maastrichtu-ids/rstudio  Images based
+      on rocker can be deployed, see https://hub.docker.com/r/rocker/rstudio Visit
+      https://github.com/MaastrichtU-IDS/rstudio for more details to build and customize
+      the RStudio image "
+    digest: d447f06701b7d9b6adb905f73b39340c6176f9bf95125e5a4f60388eabfdbfa6
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png
+    keywords:
+    - vscode
+    - code
+    - workspace
+    - python
+    - java
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: rstudio
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/rstudio-0.1.0/rstudio-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-09-05T21:05:48.135074162Z"
