@@ -16,7 +16,7 @@
         "description": "Username inside RStudio (usually keep rstudio)"
       },
       "openblasNumThreads": {
-        "type": "string",
+        "type": "integer",
         "title": "Number of threads for OpenBLAS",
         "description": "Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64)."
       },
