@@ -10,10 +10,7 @@
     },
     "gitUrl": {
       "type": "string",
-      "format": "uri",
-      "qt-uri-protocols": [
-          "https"
-      ]
+      "format": "uri"
     },
     "storage": {
       "description": "Persistent storage configuration",

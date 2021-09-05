@@ -1,3 +1,12 @@
+# DSRI Helm charts
+
+[![Release Charts](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml)
+
+Helm charts for the Data Science Research Infrastructure at Maastricht University
+
+* VisualStudio Code server
+* JupyterLab
+
 ## Install
 
 Add the Helm repository:
@@ -6,6 +15,8 @@ Add the Helm repository:
 helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
 helm repo update
 ```
+
+## Start applications
 
 Start VisualStudio Code server:
 
