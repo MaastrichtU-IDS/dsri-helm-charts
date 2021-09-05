@@ -1,0 +1,39 @@
+apiVersion: v2
+name: rstudio
+description: |
+  A Helm chart to deploy RStudio on Kubernetes and OpenShift
+
+  🐳 Available images with this template:
+  bioconductor/bioconductor_docker:devel
+  rocker/rstudio
+  rocker/tidyverse
+  ghcr.io/maastrichtu-ids/rstudio
+
+  Images based on rocker can be deployed, see https://hub.docker.com/r/rocker/rstudio
+  Visit https://github.com/MaastrichtU-IDS/rstudio for more details to build and customize the RStudio image
+
+type: application
+home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png
+
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+appVersion: 3.2.0
+
+keywords:
+  - vscode
+  - code
+  - workspace
+  - python
+  - java
+maintainers:
+  - email: vincent.emonet@gmail.com
+    name: Vincent Emonet
+sources:
+  - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+
+# annotations:
+#   category: Database
