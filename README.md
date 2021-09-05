@@ -81,3 +81,4 @@ spec:
 EOF
 ```
 
+JSON schema generated using https://www.jsonschema.net

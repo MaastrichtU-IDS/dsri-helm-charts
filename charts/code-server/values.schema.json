@@ -341,13 +341,7 @@
                       }
                   ],
                   "required": [
-                      "enabled",
-                      "termination",
-                      "insecureEdgeTerminationPolicy",
-                      "key",
-                      "certificate",
-                      "caCertificate",
-                      "destinationCACertificate"
+                      "enabled"
                   ],
                   "properties": {
                       "enabled": {
