@@ -6,9 +6,9 @@ Helm charts to easily deploy Data Science workspaces and services on Kubernetes 
 
 Checkout the `charts` folder to browse the charts available: 
 
-* VisualStudio Code server
-* JupyterLab
-* RStudio
+* [VisualStudio Code server](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/code-server)
+* [JupyterLab](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/jupyterlab)
+* [RStudio](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/rstudio)
 
 ## Install
 
