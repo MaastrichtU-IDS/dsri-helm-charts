@@ -10,6 +10,10 @@ image:
   tag: "latest"
   pullPolicy: IfNotPresent
 
+storage:
+  size: 5Gi
+  mountPath: /home/jovyan/work
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -32,7 +36,7 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8888
 
 
 openshiftRoute:

@@ -1,6 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "properties": {
+    "fullnameOverride": {
+      "description": "Application name",
+      "type": "string"
+    },
     "password": {
       "type": "string"
     },
@@ -10,6 +14,15 @@
       "qt-uri-protocols": [
           "https"
       ]
+    },
+    "storage": {
+      "description": "Persistent storage configuration",
+      "properties": {
+        "size": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "image": {
       "description": "Container Image",
@@ -22,14 +35,11 @@
         }
       },
       "type": "object"
-    },
-    "name": {
-      "description": "Application name",
-      "type": "string"
     }
   },
   "required": [
     "password",
+    "fullnameOverride",
     "port"
   ],
   "title": "Values",
