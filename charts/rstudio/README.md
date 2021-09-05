@@ -1,17 +1,10 @@
 # rstudio
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
 
-A Helm chart to deploy RStudio on Kubernetes and OpenShift
-
-Available images with this template:
-bioconductor/bioconductor_docker:devel
-rocker/rstudio
-rocker/tidyverse
-ghcr.io/maastrichtu-ids/rstudio
-
-Images based on rocker can be deployed, see https://hub.docker.com/r/rocker/rstudio
-Visit https://github.com/MaastrichtU-IDS/rstudio for more details to build and customize the RStudio image
+A Helm chart to deploy RStudio on Kubernetes and OpenShift.
+Most images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
+| rocker/rstudio | rocker/tidyverse | ghcr.io/maastrichtu-ids/rstudio
 
 ## Installing the Chart
 
@@ -84,18 +77,11 @@ The following table lists the configurable parameters of the rstudio chart and t
 | tolerations | list | `[]` |  |
 | username | string | `"rstudio"` |  |# rstudio
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
 
-A Helm chart to deploy RStudio on Kubernetes and OpenShift
-
-Available images with this template:
-bioconductor/bioconductor_docker:devel
-rocker/rstudio
-rocker/tidyverse
-ghcr.io/maastrichtu-ids/rstudio
-
-Images based on rocker can be deployed, see https://hub.docker.com/r/rocker/rstudio
-Visit https://github.com/MaastrichtU-IDS/rstudio for more details to build and customize the RStudio image
+A Helm chart to deploy RStudio on Kubernetes and OpenShift.
+Most images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
+| rocker/rstudio | rocker/tidyverse | ghcr.io/maastrichtu-ids/rstudio
 
 **Homepage:** <https://github.com/MaastrichtU-IDS/dsri-helm-charts>
 
