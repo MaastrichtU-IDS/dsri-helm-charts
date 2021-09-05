@@ -4,10 +4,11 @@
 
 Helm charts to easily deploy Data Science workspaces and services on Kubernetes and OpenShift. Developed for the [Data Science Research Infrastructure](https://maastrichtu-ids.github.io/dsri-documentation/) at Maastricht University
 
-Checkout the `charts` folder for the charts available 
+Checkout the `charts` folder to browse the charts available: 
 
 * VisualStudio Code server
 * JupyterLab
+* RStudio
 
 ## Install
 
@@ -36,12 +37,6 @@ helm uninstall code-server
 
 ## Develop
 
-Create a new chart:
-
-```bash
-helm create charts/code-server
-```
-
 Lint to check for errors: 
 
 ```bash
@@ -67,9 +62,30 @@ Delete:
 helm uninstall code-server
 ```
 
-## Add to OpenShift Catalog
+Create a new chart:
 
-You can easily add this Helm charts repository to your [OpenShift cluster catalog](https://docs.openshift.com/container-platform/4.6/cli_reference/helm_cli/configuring-custom-helm-chart-repositories.html):
+```bash
+helm create charts/code-server
+```
+
+### Generate docs
+
+Install [helm-docs](https://github.com/norwoodj/helm-docs) (requires `golang` installed):
+
+```bash
+GO111MODULE=on go get github.com/norwoodj/helm-docs/cmd/helm-docs
+pip install pre-commit
+```
+
+Generate a `README.md` for all charts:
+
+```bash
+~/go/bin/helm-docs
+```
+
+## Add charts to your OpenShift Catalog
+
+You can easily add this Helm charts repository to your [OpenShift cluster catalog](https://docs.openshift.com/container-platform/4.6/cli_reference/helm_cli/configuring-custom-helm-chart-repositories.html) if you have admin privileges:
 
 ```bash
 cat <<EOF | oc apply -f -

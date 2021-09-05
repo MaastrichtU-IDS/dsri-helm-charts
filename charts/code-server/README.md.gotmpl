@@ -1,0 +1,43 @@
+{{ template "chart.header" . }}
+
+{{ template "chart.badgesSection" . }}
+
+{{ template "chart.description" . }}
+
+
+## Installing the Chart
+
+To install the chart with the release name `{{ template "chart.name" . }}`:
+
+```bash
+helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
+helm repo update
+```
+
+## Deploying the Chart
+
+```bash
+helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
+  --set serviceAccount.name=anyuid,openshiftRoute.enabled=true \
+  --set password=changeme
+```
+
+The command deploys {{ template "chart.name" . }} on the OpenShift or Kubernetes cluster in the default configuration.
+
+
+## Uninstalling the Chart
+
+To uninstall/delete the `{{ template "chart.name" . }}` deployment:
+
+```
+helm delete {{ template "chart.name" . }}
+```
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+
+## Configuration
+
+The following table lists the configurable parameters of the {{ template "chart.name" . }} chart and their default values. They can be defined in the `values.yaml` file, or using the flag `--set`.
+
+{{ template "chart.valuesTable" . }}
