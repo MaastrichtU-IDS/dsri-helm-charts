@@ -82,3 +82,5 @@ EOF
 ```
 
 JSON schema generated using https://www.jsonschema.net
+
+Example JSON schema in RedHat Helm chart: https://github.com/redhat-developer/redhat-helm-charts/blob/master/alpha/nodejs-ex-k/values.schema.json

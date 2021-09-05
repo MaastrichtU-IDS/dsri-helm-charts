@@ -16,6 +16,9 @@
               "CHANGEME"
           ]
       },
+      "gitUrl": {
+        "type": "string"
+      },
       "storage": {
           "$id": "#/properties/storage",
           "type": "object",
