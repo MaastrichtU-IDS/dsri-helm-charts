@@ -3,6 +3,30 @@ entries:
   code-server:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-05T19:35:50.631006873Z"
+    description: A Helm chart to deploy VisualStudio Code server on Kubernetes and
+      OpenShift
+    digest: 2d4f63fbf82cd2a46099c4042da9279bdb5c740e7264ceba03bce287fc6f6a80
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://code.visualstudio.com/assets/images/code-stable.png
+    keywords:
+    - vscode
+    - code
+    - workspace
+    - python
+    - java
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: code-server
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/code-server-0.1.16/code-server-0.1.16.tgz
+    version: 0.1.16
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-05T19:28:47.946875177Z"
     description: A Helm chart to deploy VisualStudio Code server on Kubernetes and
       OpenShift
@@ -355,4 +379,4 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.1/jupyterlab-0.1.1.tgz
     version: 0.1.1
-generated: "2021-09-05T19:28:47.946976778Z"
+generated: "2021-09-05T19:35:50.631117475Z"
