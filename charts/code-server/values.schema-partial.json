@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "fullnameOverride": {
+      "description": "Application name",
+      "type": "string",
+      "default": "code-server"
+    },
+    "password": {
+      "type": "string"
+    },
+    "gitUrl": {
+      "type": "string"
+    },
+    "storage": {
+      "description": "Persistent storage configuration",
+      "properties": {
+        "size": {
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": true
+    },
+    "image": {
+      "description": "Container Image",
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "password",
+    "fullnameOverride"
+  ]
+}
