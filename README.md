@@ -21,7 +21,9 @@ helm repo update
 Start VisualStudio Code server:
 
 ```bash
-helm install code-server dsri/code-server --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme
+helm install code-server dsri/code-server \
+  --set serviceAccount.name=anyuid,openshiftRoute.enabled=true \
+  --set password=changeme
 ```
 
 Delete:
@@ -32,7 +34,7 @@ helm uninstall code-server
 
 ## Develop
 
-Create a chart:
+Create a new chart:
 
 ```bash
 helm create charts/code-server
@@ -62,4 +64,20 @@ Delete:
 helm uninstall code-server
 ```
 
-Generate JSON schema file for `values.yaml` using https://jsonformatter.org/yaml-to-jsonschema
+## Add to OpenShift Catalog
+
+You can easily add this Helm charts repository to your [OpenShift cluster catalog](https://docs.openshift.com/container-platform/4.6/cli_reference/helm_cli/configuring-custom-helm-chart-repositories.html):
+
+```bash
+cat <<EOF | oc apply -f -
+apiVersion: helm.openshift.io/v1beta1
+kind: HelmChartRepository
+metadata:
+  name: dsri-helm-charts
+spec:
+  name: dsri-helm-charts
+  connectionConfig:
+    url: https://maastrichtu-ids.github.io/dsri-helm-charts/
+EOF
+```
+

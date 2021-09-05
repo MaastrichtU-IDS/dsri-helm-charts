@@ -3,14 +3,14 @@
   "properties": {
     "fullnameOverride": {
       "description": "Application name",
-      "type": "string"
+      "type": "string",
+      "default": "code-server"
     },
     "password": {
       "type": "string"
     },
     "gitUrl": {
-      "type": "string",
-      "format": "uri"
+      "type": "string"
     },
     "storage": {
       "description": "Persistent storage configuration",
@@ -36,8 +36,7 @@
   },
   "required": [
     "password",
-    "fullnameOverride",
-    "port"
+    "fullnameOverride"
   ],
   "title": "Values",
   "type": "object"
