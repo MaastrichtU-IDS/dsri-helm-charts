@@ -74,13 +74,20 @@ Install [helm-docs](https://github.com/norwoodj/helm-docs) (requires `golang` in
 
 ```bash
 GO111MODULE=on go get github.com/norwoodj/helm-docs/cmd/helm-docs
-pip install pre-commit
 ```
 
 Generate a `README.md` for all charts:
 
 ```bash
 ~/go/bin/helm-docs
+```
+
+Automatically generate docs when commiting:
+
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit install-hooks
 ```
 
 ## Add charts to your OpenShift Catalog
