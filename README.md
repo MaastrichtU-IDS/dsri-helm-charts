@@ -2,7 +2,9 @@
 
 [![Release Charts](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml)
 
-Helm charts for the Data Science Research Infrastructure at Maastricht University
+Helm charts to easily deploy Data Science workspaces and services on Kubernetes and OpenShift. Developed for the [Data Science Research Infrastructure](https://maastrichtu-ids.github.io/dsri-documentation/) at Maastricht University
+
+Checkout the `charts` folder for the charts available 
 
 * VisualStudio Code server
 * JupyterLab
