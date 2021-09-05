@@ -43,7 +43,7 @@ spec:
             - name: ROOT
               value: "TRUE"
             - name: OPENBLAS_NUM_THREADS
-              value: {{ toString .Values.openblasNumThreads }}
+              value: "{{ toString .Values.openblasNumThreads }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
