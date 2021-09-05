@@ -68,7 +68,7 @@
                   "$id": "#/properties/image/properties/pullPolicy",
                   "type": "string",
                   "title": "Image pull policy",
-                  "description": "Describe when the image is pulled."
+                  "description": "Describe when the image is pulled: Always, IfNotPresent, Never."
               }
           },
           "additionalProperties": true
@@ -189,6 +189,7 @@
           "$id": "#/properties/ingress",
           "type": "object",
           "title": "Ingress configuration",
+          "description": "For routing on Kubernetes (disabled by default)",
           "required": [
               "enabled",
               "annotations",

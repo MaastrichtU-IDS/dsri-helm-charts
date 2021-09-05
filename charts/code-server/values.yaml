@@ -2,11 +2,11 @@
 # Declare variables to be passed into your templates.
 
 # Password to access the web interface
-password: CHANGEME
+password: ""
 
 # Git URL to be cloned in the workspace
-# gitUrl: ""
-gitUrl: https://github.com/MaastrichtU-IDS/play-fair
+gitUrl: ""
+# gitUrl: https://github.com/MaastrichtU-IDS/play-fair
 
 storage:
   size: 5Gi
@@ -19,7 +19,6 @@ image:
 
 serviceAccount:
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
   name: "anyuid"
   # Specifies whether a service account should be created
   create: false
