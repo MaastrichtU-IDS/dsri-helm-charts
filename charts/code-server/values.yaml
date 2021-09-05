@@ -5,7 +5,10 @@
 password: CHANGEME
 
 # Git URL to be cloned in the workspace
-# gitUrl: https://github.com/MaastrichtU-IDS/play-fair
+# gitUrl: ""
+gitUrl: https://github.com/MaastrichtU-IDS/play-fair
+
+fullnameOverride: "code"
 
 storage:
   size: 5Gi
@@ -66,7 +69,6 @@ ingress:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
 
 replicaCount: 1
 

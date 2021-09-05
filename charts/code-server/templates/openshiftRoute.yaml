@@ -1,14 +1,10 @@
----
 {{- if .Values.openshiftRoute.enabled -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ include "code-server.fullname" . }}
   labels:
-{{ include "code-server.labels" . | indent 4 }}
-  {{- with .Values.labels }}
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{ include "code-server.labels" . | indent 4 }}
   {{- with .Values.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

@@ -35,22 +35,22 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: {{ .Values.storage.mountPath }}
           command:
-          - "start-notebook.sh"
-          - "--no-browser"
-          - "--ip=0.0.0.0"
-          - "--config=/etc/jupyter/openshift/jupyter_notebook_config.py"
+            - "start-notebook.sh"
+            - "--no-browser"
+            - "--ip=0.0.0.0"
+            - "--config=/etc/jupyter/openshift/jupyter_notebook_config.py"
           env:
-          - name: JUPYTER_TOKEN
-            valueFrom:
-              secretKeyRef:
-                key: application-password
-                name: {{ include "jupyterlab.fullname" . }}
-          - name: JUPYTER_ENABLE_LAB
-            value: "yes"
-          - name: GRANT_SUDO
-            value: "yes"
-          - name: GIT_URL
-            value: {{ .Values.gitUrl }}
+            - name: JUPYTER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: application-password
+                  name: {{ include "jupyterlab.fullname" . }}
+            - name: JUPYTER_ENABLE_LAB
+              value: "yes"
+            - name: GRANT_SUDO
+              value: "yes"
+            - name: GIT_URL
+              value: {{ .Values.gitUrl }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -66,13 +66,13 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          - name: data
-            mountPath: {{ .Values.storage.mountPath }}
-          - name: configs
-            mountPath: "/etc/jupyter/openshift"
-          - name: dshm
-            mountPath: /dev/shm
-        volumes:
+            - name: data
+              mountPath: {{ .Values.storage.mountPath }}
+            - name: configs
+              mountPath: "/etc/jupyter/openshift"
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "jupyterlab.fullname" . }}

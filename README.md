@@ -44,12 +44,13 @@ Lint to check for errors:
 
 ```bash
 helm lint charts/code-server
+yamllint charts/code-server/templates/deployment.yaml
 ```
 
 Test a chart without deploying:
 
 ```bash
-helm install --dry-run --debug ./charts/code-server --set service.internalPort=8080 --generate-name
+helm install --dry-run --debug ./charts/code-server --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme --generate-name
 ```
 
 Deploy from local source code:
@@ -84,3 +85,4 @@ EOF
 JSON schema generated using https://www.jsonschema.net
 
 Example JSON schema in RedHat Helm chart: https://github.com/redhat-developer/redhat-helm-charts/blob/master/alpha/nodejs-ex-k/values.schema.json
+

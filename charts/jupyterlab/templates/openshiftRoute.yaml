@@ -1,4 +1,3 @@
----
 {{- if .Values.openshiftRoute.enabled -}}
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -48,7 +47,7 @@ spec:
 {{- end }}
   to:
     kind: Service
-    name: {{ include "code-server.fullname" . }}
+    name: {{ include "jupyterlab.fullname" . }}
     weight: {{ .Values.openshiftRoute.service.weight }}
 {{- with .Values.openshiftRoute.alternateBackends }}
   alternateBackends:
