@@ -472,6 +472,27 @@ entries:
   jupyterlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-07T08:38:09.620573936Z"
+    description: A Helm chart for JupyterLab on Kubernetes and OpenShift
+    digest: b2d3a9427f7685086b9b5fdb7c8fb8ada19b0f5b94deb192555fd5b5edda0001
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
+    keywords:
+    - jupyterlab
+    - jupyter
+    - notebook
+    - workspace
+    - python
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: jupyterlab
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.7/jupyterlab-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-05T22:42:31.793606491Z"
     description: A Helm chart for JupyterLab on Kubernetes and OpenShift
     digest: 2e812a7ee1b4d4aa0a5c661f77dc5344ba65068dc859da4e7cebe1693693bc98
@@ -715,4 +736,4 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/rstudio-0.1.0/rstudio-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-05T22:56:08.678851077Z"
+generated: "2021-09-07T08:38:09.620728737Z"
