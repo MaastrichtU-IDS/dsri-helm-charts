@@ -1,6 +1,8 @@
 {{ template "chart.header" . }}
 
-{{ template "chart.badgesSection" . }}
+{{/* {{ template "chart.badgesSection" . }} */}}
+
+{{ template "chart.typeBadge" . }} {{ template "chart.appVersionBadge" . }}
 
 {{ template "chart.description" . }}
 
@@ -20,7 +22,8 @@ To deploy the chart with the release name `{{ template "chart.name" . }}`:
 
 ```bash
 helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
-  --set serviceAccount.name=anyuid,openshiftRoute.enabled=true \
+  --set serviceAccount.name=anyuid \
+  --set openshiftRoute.enabled=true \
   --set password=changeme
 ```
 

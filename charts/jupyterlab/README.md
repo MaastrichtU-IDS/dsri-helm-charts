@@ -1,6 +1,6 @@
 # jupyterlab
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)  ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
 A Helm chart for JupyterLab on Kubernetes and OpenShift
 
@@ -19,7 +19,8 @@ To deploy the chart with the release name `jupyterlab`:
 
 ```bash
 helm install jupyterlab dsri/jupyterlab \
-  --set serviceAccount.name=anyuid,openshiftRoute.enabled=true \
+  --set serviceAccount.name=anyuid \
+  --set openshiftRoute.enabled=true \
   --set password=changeme
 ```
 

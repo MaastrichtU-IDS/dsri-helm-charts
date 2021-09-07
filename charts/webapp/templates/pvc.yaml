@@ -1,0 +1,12 @@
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: {{ include "webapp.fullname" . }}
+  labels:
+    {{- include "webapp.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - "ReadWriteMany"
+  resources:
+    requests:
+      storage: {{ .Values.storage.size }}

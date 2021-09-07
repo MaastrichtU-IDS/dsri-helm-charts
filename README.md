@@ -1,6 +1,6 @@
-# DSRI Helm charts
+# DSRI Helm Charts
 
-[![Release Charts](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml)
+[![Release Charts](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/MaastrichtU-IDS/dsri-helm-charts/actions/workflows/release.yml) 
 
 Helm charts to easily deploy Data Science workspaces and services on Kubernetes and OpenShift. Developed for the [Data Science Research Infrastructure](https://maastrichtu-ids.github.io/dsri-documentation/) at Maastricht University
 

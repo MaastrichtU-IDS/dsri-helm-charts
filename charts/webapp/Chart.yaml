@@ -1,11 +1,13 @@
 apiVersion: v2
-name: jupyterlab
-description: A Helm chart for JupyterLab on Kubernetes and OpenShift
+name: webapp
+description: |
+  A generic reuseable Helm chart for deploying almost any dockerized application exposing a web interface to a HTTPS route on OpenShift and Kubernetes
+
 type: application
 home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Logo_Semantic_Web.svg/1024px-Logo_Semantic_Web.svg.png
 
-version: 0.1.9
+version: 0.1.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -13,14 +15,15 @@ version: 0.1.9
 appVersion: 1.16.0
 
 keywords:
-  - jupyterlab
-  - jupyter
-  - notebook
-  - workspace
-  - python
+  - webapp
+  - web application
+  - generic
+  - docker
 maintainers:
   - email: vincent.emonet@gmail.com
     name: Vincent Emonet
+sources:
+  - https://github.com/MaastrichtU-IDS/dsri-helm-charts
 
 annotations:
   artifacthub.io/operator: "false"

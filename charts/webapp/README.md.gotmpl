@@ -23,8 +23,7 @@ To deploy the chart with the release name `{{ template "chart.name" . }}`:
 ```bash
 helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true \
-  --set password=changeme
+  --set openshiftRoute.enabled=true
 ```
 
 The command deploys {{ template "chart.name" . }} on the OpenShift or Kubernetes cluster in the default configuration.

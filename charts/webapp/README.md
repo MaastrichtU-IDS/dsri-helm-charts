@@ -1,10 +1,8 @@
-# rstudio
+# webapp
 
-![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)  ![AppVersion: 3.2.0](https://img.shields.io/badge/AppVersion-3.2.0-informational?style=flat-square)
+![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)  ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
-A Helm chart to deploy RStudio on Kubernetes and OpenShift.
-Most images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
-| rocker/rstudio | rocker/tidyverse | ghcr.io/maastrichtu-ids/rstudio
+A generic reuseable Helm chart for deploying almost any dockerized application exposing a web interface to a HTTPS route on OpenShift and Kubernetes
 
 ## Installing the Chart
 
@@ -17,36 +15,37 @@ helm repo update
 
 ## Deploying the Chart
 
-To deploy the chart with the release name `rstudio`:
+To deploy the chart with the release name `webapp`:
 
 ```bash
-helm install rstudio dsri/rstudio \
+helm install webapp dsri/webapp \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true \
-  --set password=changeme
+  --set openshiftRoute.enabled=true
 ```
 
-The command deploys rstudio on the OpenShift or Kubernetes cluster in the default configuration.
+The command deploys webapp on the OpenShift or Kubernetes cluster in the default configuration.
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `rstudio` deployment:
+To uninstall/delete the `webapp` deployment:
 
 ```
-helm delete rstudio
+helm delete webapp
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 ## Configuration
 
-The following table lists the configurable parameters of the rstudio chart and their default values. They can be defined in the `values.yaml` file, or using the flag `--set`.
+The following table lists the configurable parameters of the webapp chart and their default values. They can be defined in the `values.yaml` file, or using the flag `--set`.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| autoscaling.enabled | bool | `false` |  |
+| extraEnvs | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"ghcr.io/maastrichtu-ids/rstudio"` |  |
+| image.repository | string | `"ghcr.io/maastrichtu-ids/code-server"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
 | ingress.annotations | object | `{}` |  |
@@ -55,7 +54,6 @@ The following table lists the configurable parameters of the rstudio chart and t
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
-| openblasNumThreads | int | `1` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
 | openshiftRoute.enabled | bool | `true` |  |
 | openshiftRoute.host | string | `""` |  |
 | openshiftRoute.path | string | `""` |  |
@@ -63,17 +61,16 @@ The following table lists the configurable parameters of the rstudio chart and t
 | openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
 | openshiftRoute.tls.termination | string | `"edge"` |  |
 | openshiftRoute.wildcardPolicy | string | `"None"` |  |
-| password | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
+| replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.port | int | `8787` |  |
+| service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
-| storage.mountPath | string | `"/home/rstudio"` |  |
+| storage.mountPath | string | `"/home/coder/project"` |  |
 | storage.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |
-| username | string | `"rstudio"` |  |
