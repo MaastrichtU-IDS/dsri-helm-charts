@@ -5,7 +5,7 @@ type: application
 home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
 
-version: 0.1.7
+version: 0.1.8
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -21,3 +21,6 @@ keywords:
 maintainers:
   - email: vincent.emonet@gmail.com
     name: Vincent Emonet
+
+annotations:
+  artifacthub.io/operator: "false"
