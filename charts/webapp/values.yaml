@@ -16,8 +16,9 @@ storage:
   mountPath: /home/coder/project
 
 extraEnvs: []
-  # - name: PASSWORD
-  #   value: mypassword
+# extraEnvs: 
+#   - name: PASSWORD
+#     value: mypassword
 
 serviceAccount:
   # The name of the service account to use.
