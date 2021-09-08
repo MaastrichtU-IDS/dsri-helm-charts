@@ -52,11 +52,14 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.storage.enabled }}
           volumeMounts:
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
             # - name: dshm
             #   mountPath: /dev/shm
+          {{- end }}
+      {{- if .Values.storage.enabled }}
       volumes:
         - name: data
           persistentVolumeClaim:
@@ -64,6 +67,7 @@ spec:
         # - name: dshm
         #   emptyDir:
         #     medium: Memory
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

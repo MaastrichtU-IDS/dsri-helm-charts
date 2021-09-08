@@ -5,6 +5,80 @@
       "image"
   ],
   "properties": {
+      "image": {
+          "type": "object",
+          "title": "Docker image",
+          "description": "Configure the Docker image to use.",
+          "required": [
+              "repository",
+              "tag",
+              "pullPolicy"
+          ],
+          "properties": {
+              "repository": {
+                  "type": "string",
+                  "title": "Image repository",
+                  "description": "URL of the Docker image to use"
+              },
+              "tag": {
+                  "type": "string",
+                  "title": "Tag of the image",
+                  "description": "Tag (version) of the image used"
+              },
+              "pullPolicy": {
+                  "type": "string",
+                  "title": "Image pull policy",
+                  "description": "Describe when the image is pulled: Always, IfNotPresent, Never."
+              }
+          },
+          "additionalProperties": true
+      },
+      "service": {
+          "type": "object",
+          "title": "Service configuration",
+          "description": "Configure on which port the application will be served.",
+          "required": [
+              "type",
+              "port"
+          ],
+          "properties": {
+              "type": {
+                  "type": "string",
+                  "title": "Service type"
+              },
+              "port": {
+                  "type": "integer",
+                  "title": "Port"
+              }
+          },
+          "additionalProperties": true
+      },
+      "serviceAccount": {
+          "type": "object",
+          "title": "Service Account configuration",
+          "description": "Configure the Kubernetes service account running the application (anyuid by default for OpenShift)",
+          "required": [
+              "name",
+              "create"
+          ],
+          "properties": {
+              "name": {
+                  "type": "string",
+                  "title": "Service account name",
+                  "description": "Name of the service account to use"
+              },
+              "create": {
+                  "type": "boolean",
+                  "title": "Create the service account"
+              },
+              "annotations": {
+                  "type": "object",
+                  "title": "annotations",
+                  "additionalProperties": true
+              }
+          },
+          "additionalProperties": true
+      },
       "storage": {
           "type": "object",
           "title": "Persistent storage",
@@ -14,6 +88,10 @@
               "mountPath"
           ],
           "properties": {
+              "enabled": {
+                  "type": "boolean",
+                  "title": "Enabled"
+              },
               "size": {
                   "type": "string",
                   "title": "Size of the persistent storage",
@@ -27,92 +105,7 @@
           },
           "additionalProperties": true
       },
-      "image": {
-          "type": "object",
-          "title": "Docker image",
-          "description": "Configure the Docker image to use.",
-          "required": [
-              "repository",
-              "tag",
-              "pullPolicy"
-          ],
-          "properties": {
-              "repository": {
-                  "$id": "#/properties/image/properties/repository",
-                  "type": "string",
-                  "title": "Image repository",
-                  "description": "URL of the Docker image to use"
-              },
-              "tag": {
-                  "$id": "#/properties/image/properties/tag",
-                  "type": "string",
-                  "title": "Tag of the image",
-                  "description": "Tag (version) of the image used"
-              },
-              "pullPolicy": {
-                  "$id": "#/properties/image/properties/pullPolicy",
-                  "type": "string",
-                  "title": "Image pull policy",
-                  "description": "Describe when the image is pulled: Always, IfNotPresent, Never."
-              }
-          },
-          "additionalProperties": true
-      },
-      "serviceAccount": {
-          "$id": "#/properties/serviceAccount",
-          "type": "object",
-          "title": "Service Account configuration",
-          "description": "Configure the Kubernetes service account running the application",
-          "required": [
-              "name",
-              "create"
-          ],
-          "properties": {
-              "name": {
-                  "$id": "#/properties/serviceAccount/properties/name",
-                  "type": "string",
-                  "title": "Service account name",
-                  "description": "Name of the service account to use"
-              },
-              "create": {
-                  "$id": "#/properties/serviceAccount/properties/create",
-                  "type": "boolean",
-                  "title": "Create the service account"
-              },
-              "annotations": {
-                  "$id": "#/properties/serviceAccount/properties/annotations",
-                  "type": "object",
-                  "title": "annotations",
-                  "additionalProperties": true
-              }
-          },
-          "additionalProperties": true
-      },
-      "service": {
-          "$id": "#/properties/service",
-          "type": "object",
-          "title": "Service configuration",
-          "description": "Configure on which port the application will be served.",
-          "required": [
-              "type",
-              "port"
-          ],
-          "properties": {
-              "type": {
-                  "$id": "#/properties/service/properties/type",
-                  "type": "string",
-                  "title": "Service type"
-              },
-              "port": {
-                  "$id": "#/properties/service/properties/port",
-                  "type": "integer",
-                  "title": "Port"
-              }
-          },
-          "additionalProperties": true
-      },
       "openshiftRoute": {
-          "$id": "#/properties/openshiftRoute",
           "type": "object",
           "title": "Expose route on OpenShift",
           "description": "Enabled by default",
@@ -122,27 +115,22 @@
           ],
           "properties": {
               "enabled": {
-                  "$id": "#/properties/openshiftRoute/properties/enabled",
                   "type": "boolean",
                   "title": "Enabled"
               },
               "host": {
-                  "$id": "#/properties/openshiftRoute/properties/host",
                   "type": "string",
                   "title": "Host of the route"
               },
               "path": {
-                  "$id": "#/properties/openshiftRoute/properties/path",
                   "type": "string",
                   "title": "path of the route"
               },
               "wildcardPolicy": {
-                  "$id": "#/properties/openshiftRoute/properties/wildcardPolicy",
                   "type": "string",
                   "title": "wildcard policy"
               },
               "tls": {
-                  "$id": "#/properties/openshiftRoute/properties/tls",
                   "type": "object",
                   "title": "TLS configuration",
                   "description": "To enable HTTPS (enabled by default).",
@@ -151,17 +139,14 @@
                   ],
                   "properties": {
                       "enabled": {
-                          "$id": "#/properties/openshiftRoute/properties/tls/properties/enabled",
                           "type": "boolean",
                           "title": "Enabled"
                       },
                       "termination": {
-                          "$id": "#/properties/openshiftRoute/properties/tls/properties/termination",
                           "type": "string",
                           "title": "Termination"
                       },
                       "insecureEdgeTerminationPolicy": {
-                          "$id": "#/properties/openshiftRoute/properties/tls/properties/insecureEdgeTerminationPolicy",
                           "type": "string",
                           "title": "insecureEdgeTerminationPolicy"
                       }
@@ -172,7 +157,6 @@
           "additionalProperties": true
       },
       "ingress": {
-          "$id": "#/properties/ingress",
           "type": "object",
           "title": "Ingress configuration",
           "description": "For routing on Kubernetes (disabled by default)",
@@ -184,18 +168,15 @@
           ],
           "properties": {
               "enabled": {
-                  "$id": "#/properties/ingress/properties/enabled",
                   "type": "boolean",
                   "title": "Enabled"
               },
               "annotations": {
-                  "$id": "#/properties/ingress/properties/annotations",
                   "type": "object",
                   "title": "annotations",
                   "additionalProperties": true
               },
               "hosts": {
-                  "$id": "#/properties/ingress/properties/hosts",
                   "type": "array",
                   "title": "hosts",
                   "default": [],
@@ -237,7 +218,6 @@
                   }
               },
               "tls": {
-                  "$id": "#/properties/ingress/properties/tls",
                   "type": "array",
                   "title": "tls",
                   "description": "An explanation about the purpose of this instance.",
@@ -251,8 +231,8 @@
       },
       "extraEnvs": {
         "type": "array",
-        "title": "Extra environment variables",
-        "description": "Environment variable to add to the container started.",
+        "title": "Environment variables",
+        "description": "Environment variable to add to the container.",
         "additionalItems": true,
         "items": {
             "type": "object",
@@ -269,14 +249,44 @@
         }
       },
       "resources": {
-        "$id": "#/properties/resources",
         "type": "object",
         "title": "Resources limits",
         "description": "Set limits for CPU or GPU",
-        "additionalProperties": true
+        "additionalProperties": true,
+        "properties": {
+            "limits": {
+                "type": "object",
+                "title": "Limits",
+                "additionalProperties": true,
+                "properties": {
+                  "cpu": {
+                    "type": "string",
+                    "title": "CPU"
+                  },
+                  "memory": {
+                    "type": "string",
+                    "title": "Memory"
+                  }
+                }
+            },
+            "requests": {
+                "type": "object",
+                "title": "Requests",
+                "additionalProperties": true,
+                "properties": {
+                  "cpu": {
+                    "type": "string",
+                    "title": "CPU"
+                  },
+                  "memory": {
+                    "type": "string",
+                    "title": "Memory"
+                  }
+                }
+            }
+        }
       },
       "imagePullSecrets": {
-          "$id": "#/properties/imagePullSecrets",
           "type": "array",
           "title": "imagePullSecrets",
           "additionalItems": true,
@@ -285,30 +295,25 @@
           }
       },
       "podAnnotations": {
-          "$id": "#/properties/podAnnotations",
           "type": "object",
           "title": "Pod Annotations",
           "additionalProperties": true
       },
       "podSecurityContext": {
-          "$id": "#/properties/podSecurityContext",
           "type": "object",
           "title": "Pod Security Context",
           "additionalProperties": true
       },
       "securityContext": {
-          "$id": "#/properties/securityContext",
           "type": "object",
           "title": "Security Context"
       },
       "nodeSelector": {
-          "$id": "#/properties/nodeSelector",
           "type": "object",
           "title": "Node Selector",
           "additionalProperties": true
       },
       "tolerations": {
-          "$id": "#/properties/tolerations",
           "type": "array",
           "title": "Tolerations",
           "default": [],
@@ -321,7 +326,6 @@
           }
       },
       "affinity": {
-          "$id": "#/properties/affinity",
           "type": "object",
           "title": "Affinity",
           "additionalProperties": true

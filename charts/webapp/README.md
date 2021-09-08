@@ -66,11 +66,12 @@ The following table lists the configurable parameters of the webapp chart and th
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
-| service.port | int | `80` |  |
+| service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
+| storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/coder/project"` |  |
 | storage.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |

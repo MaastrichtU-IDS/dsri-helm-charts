@@ -1,18 +1,19 @@
 # Default values for rstudio.
 # Declare variables to be passed into your templates.
 
-storage:
-  size: 5Gi
-  mountPath: /home/coder/project
-
 image:
   repository: ghcr.io/maastrichtu-ids/code-server
   tag: "latest"
   pullPolicy: IfNotPresent
 
 service:
+  port: 8080
   type: ClusterIP
-  port: 80
+
+storage:
+  enabled: true
+  size: 5Gi
+  mountPath: /home/coder/project
 
 extraEnvs: []
   # - name: PASSWORD
