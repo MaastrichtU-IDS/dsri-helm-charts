@@ -35,9 +35,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: {{ .Values.storage.mountPath }}
           env:
-          {{- range .Values.extraEnvs }}
-            - {{ toYaml . | nindent 12 }}
-          {{- end }}
+            {{ toYaml . | nindent 12 }}
+          # {{- range .Values.extraEnvs }}
+          #   - {{ toYaml . | nindent 12 }}
+          # {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
