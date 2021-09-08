@@ -2,7 +2,7 @@
 
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)  ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
-A Helm chart for JupyterLab on Kubernetes and OpenShift
+A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks on OpenShift and Kubernetes
 
 ## Installing the Chart
 
