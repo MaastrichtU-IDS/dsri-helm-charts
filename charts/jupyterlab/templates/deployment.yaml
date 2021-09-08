@@ -54,6 +54,7 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 15 
             httpGet:
               path: /
               port: http
@@ -61,6 +62,9 @@ spec:
             httpGet:
               path: /
               port: http
+          failureThreshold: 40
+          periodSeconds: 10
+          timeoutSeconds: 2
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

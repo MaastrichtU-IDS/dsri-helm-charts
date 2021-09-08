@@ -34,8 +34,8 @@ securityContext:
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
   port: 8888
+  type: ClusterIP
 
 openshiftRoute:
   enabled: true
