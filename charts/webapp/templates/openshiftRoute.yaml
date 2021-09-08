@@ -1,0 +1,37 @@
+{{- if .Values.openshiftRoute.enabled -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "webapp.fullname" . }}
+  labels:
+{{ include "webapp.labels" . | indent 4 }}
+  {{- with .Values.labels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+# Stub to solve ingress API validation issues
+status:
+  ingress:
+    - host: ""
+spec:
+  host: {{ .Values.openshiftRoute.host }}
+  path: {{ .Values.openshiftRoute.path }}
+  wildcardPolicy: {{ .Values.openshiftRoute.wildcardPolicy }}
+  port:
+    targetPort: http
+{{- if .Values.openshiftRoute.tls.enabled }}
+  tls:
+{{- with .Values.openshiftRoute.tls }}
+    termination: {{ .termination }}
+    insecureEdgeTerminationPolicy: {{ .insecureEdgeTerminationPolicy }}
+{{- end}}
+{{- end }}
+  to:
+    kind: Service
+    name: {{ include "webapp.fullname" . }}
+    weight: 100
+{{- end }}
+

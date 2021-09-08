@@ -20,7 +20,8 @@ To deploy the chart with the release name `webapp`:
 ```bash
 helm install webapp dsri/webapp \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true
+  --set openshiftRoute.enabled=true \
+  --set service.port=80
 ```
 
 The command deploys webapp on the OpenShift or Kubernetes cluster in the default configuration.

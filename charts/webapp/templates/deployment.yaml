@@ -36,8 +36,8 @@ spec:
           workingDir: {{ .Values.storage.mountPath }}
           env:
             {{- range .Values.extraEnvs }}
-            - name: {{ .name }}
-              value: {{ .value }}
+            - name: {{ toString .name }}
+              value: {{ toString .value }}
             {{- end }}
           ports:
             - name: http
