@@ -42,20 +42,20 @@
               "port"
           ],
           "properties": {
+              "port": {
+                  "type": "integer",
+                  "title": "Port of the application"
+              },
               "type": {
                   "type": "string",
                   "title": "Service type"
-              },
-              "port": {
-                  "type": "integer",
-                  "title": "Port"
               }
           },
           "additionalProperties": true
       },
       "serviceAccount": {
           "type": "object",
-          "title": "Service Account configuration",
+          "title": "Service Account",
           "description": "Configure the Kubernetes service account running the application (anyuid by default for OpenShift)",
           "required": [
               "name",
@@ -160,79 +160,12 @@
           "type": "object",
           "title": "Ingress configuration",
           "description": "For routing on Kubernetes (disabled by default)",
-          "required": [
-              "enabled",
-              "annotations",
-              "hosts",
-              "tls"
-          ],
-          "properties": {
-              "enabled": {
-                  "type": "boolean",
-                  "title": "Enabled"
-              },
-              "annotations": {
-                  "type": "object",
-                  "title": "annotations",
-                  "additionalProperties": true
-              },
-              "hosts": {
-                  "type": "array",
-                  "title": "hosts",
-                  "default": [],
-                  "examples": [
-                      [
-                          {
-                              "host": "chart-example.local",
-                              "paths": []
-                          }
-                      ]
-                  ],
-                  "additionalItems": true,
-                  "items": {
-                      "$id": "#/properties/ingress/properties/hosts/items",
-                      "anyOf": [
-                          {
-                              "$id": "#/properties/ingress/properties/hosts/items/anyOf/0",
-                              "type": "object",
-                              "title": "first anyOf",
-                              "properties": {
-                                  "host": {
-                                      "$id": "#/properties/ingress/properties/hosts/items/anyOf/0/properties/host",
-                                      "type": "string",
-                                      "title": "host"
-                                  },
-                                  "paths": {
-                                      "$id": "#/properties/ingress/properties/hosts/items/anyOf/0/properties/paths",
-                                      "type": "array",
-                                      "title": "paths",
-                                      "additionalItems": true,
-                                      "items": {
-                                          "$id": "#/properties/ingress/properties/hosts/items/anyOf/0/properties/paths/items"
-                                      }
-                                  }
-                              },
-                              "additionalProperties": true
-                          }
-                      ]
-                  }
-              },
-              "tls": {
-                  "type": "array",
-                  "title": "tls",
-                  "description": "An explanation about the purpose of this instance.",
-                  "additionalItems": true,
-                  "items": {
-                      "$id": "#/properties/ingress/properties/tls/items"
-                  }
-              }
-          },
           "additionalProperties": true
       },
       "extraEnvs": {
         "type": "array",
         "title": "Environment variables",
-        "description": "Environment variable to add to the container.",
+        "description": "Configure the environment variable to pass to the container.",
         "additionalItems": true,
         "items": {
             "type": "object",
