@@ -9,14 +9,15 @@ username: "rstudio"
 # Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64)
 openblasNumThreads: 1
 
-storage:
-  size: 5Gi
-  mountPath: /home/rstudio
-
 image:
   repository: ghcr.io/maastrichtu-ids/rstudio
   tag: "latest"
   pullPolicy: IfNotPresent
+
+storage:
+  enabled: true
+  size: 5Gi
+  mountPath: /home/rstudio
 
 serviceAccount:
   # The name of the service account to use.
@@ -47,6 +48,11 @@ ingress:
     - host: chart-example.local
       paths: []
   tls: []
+
+extraEnvs: []
+# extraEnvs: 
+#   - name: PASSWORD
+#     value: mypassword
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

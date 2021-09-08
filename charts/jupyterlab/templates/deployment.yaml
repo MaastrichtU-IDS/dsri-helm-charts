@@ -49,6 +49,10 @@ spec:
               value: "yes"
             - name: GIT_URL
               value: {{ .Values.gitUrl }}
+            {{- range .Values.extraEnvs }}
+            - name: {{ toString .name }}
+              value: {{ toString .value }}
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -72,22 +76,26 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - name: data
-              mountPath: {{ .Values.storage.mountPath }}
             - name: configs
               mountPath: "/etc/jupyter/openshift"
             - name: dshm
               mountPath: /dev/shm
+            {{- if .Values.storage.enabled }}
+            - name: data
+              mountPath: {{ .Values.storage.mountPath }}
+            {{- end }}
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: {{ include "jupyterlab.fullname" . }}
         - name: configs
           configMap:
             name: {{ include "jupyterlab.fullname" . }}
         - name: dshm
           emptyDir:
             medium: Memory
+        {{- if .Values.storage.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "webapp.fullname" . }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

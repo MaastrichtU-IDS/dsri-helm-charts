@@ -43,6 +43,7 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| extraEnvs | list | `[]` |  |
 | gitUrl | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
@@ -71,6 +72,7 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
+| storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/jovyan/work"` |  |
 | storage.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |

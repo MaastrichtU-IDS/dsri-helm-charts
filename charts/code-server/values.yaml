@@ -8,14 +8,15 @@ password: ""
 gitUrl: ""
 # gitUrl: https://github.com/MaastrichtU-IDS/play-fair
 
-storage:
-  size: 5Gi
-  mountPath: /home/coder/project
-
 image:
   repository: ghcr.io/maastrichtu-ids/code-server
   tag: "latest"
   pullPolicy: IfNotPresent
+
+storage:
+  enabled: true
+  size: 5Gi
+  mountPath: /home/coder/project
 
 serviceAccount:
   # The name of the service account to use.
@@ -46,6 +47,11 @@ ingress:
     - host: chart-example.local
       paths: []
   tls: []
+
+extraEnvs: []
+# extraEnvs: 
+#   - name: PASSWORD
+#     value: mypassword
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -45,6 +45,7 @@ The following table lists the configurable parameters of the rstudio chart and t
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
+| extraEnvs | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/rstudio"` |  |
 | image.tag | string | `"latest"` |  |
@@ -73,6 +74,7 @@ The following table lists the configurable parameters of the rstudio chart and t
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
+| storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/rstudio"` |  |
 | storage.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |

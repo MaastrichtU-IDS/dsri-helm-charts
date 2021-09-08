@@ -2,8 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Password to access the web interface
 password: ""
 
+# Git URL to be cloned in the workspace
 gitUrl: ""
 
 image:
@@ -12,6 +14,7 @@ image:
   pullPolicy: IfNotPresent
 
 storage:
+  enabled: true
   size: 5Gi
   mountPath: /home/jovyan/work
 
@@ -55,6 +58,10 @@ ingress:
       paths: []
   tls: []
 
+extraEnvs: []
+# extraEnvs: 
+#   - name: PASSWORD
+#     value: mypassword
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

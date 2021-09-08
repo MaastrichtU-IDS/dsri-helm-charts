@@ -40,6 +40,10 @@ spec:
                   name: {{ include "code-server.fullname" . }}
             - name: GIT_URL
               value: {{ .Values.gitUrl }}
+          {{- range .Values.extraEnvs }}
+            - name: {{ toString .name }}
+              value: {{ toString .value }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -63,17 +67,21 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - name: data
-              mountPath: {{ .Values.storage.mountPath }}
             - name: dshm
               mountPath: /dev/shm
+            {{- if .Values.storage.enabled }}
+            - name: data
+              mountPath: {{ .Values.storage.mountPath }}
+            {{- end }}
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: {{ include "code-server.fullname" . }}
         - name: dshm
           emptyDir:
             medium: Memory
+        {{- if .Values.storage.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "code-server.fullname" . }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
