@@ -893,6 +893,31 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-08T08:26:03.472758601Z"
+    description: 'A generic reuseable Helm chart for deploying almost any dockerized
+      application exposing a web interface to a HTTPS route on OpenShift and Kubernetes '
+    digest: 44baab286f5adc97e54eeaadaf24fbbacd7094e351567c209e88ea9239285d4b
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Logo_Semantic_Web.svg/1024px-Logo_Semantic_Web.svg.png
+    keywords:
+    - webapp
+    - web application
+    - generic
+    - docker
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: webapp
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.1/webapp-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-07T18:56:49.170119522Z"
     description: 'A generic reuseable Helm chart for deploying almost any dockerized
       application exposing a web interface to a HTTPS route on OpenShift and Kubernetes '
@@ -914,4 +939,4 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-07T18:56:49.171091632Z"
+generated: "2021-09-08T08:26:03.472907504Z"
