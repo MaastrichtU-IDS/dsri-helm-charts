@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: {{ .Values.storage.mountPath }}
           env:
-            {{ toYaml . | nindent 12 }}
+            {{ toYaml .Values.extraEnvs | nindent 12 }}
           # {{- range .Values.extraEnvs }}
           #   - {{ toYaml . | nindent 12 }}
           # {{- end }}
