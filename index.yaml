@@ -5,6 +5,32 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-10T10:45:28.391582277Z"
+    description: A Helm chart to deploy VisualStudio Code server on Kubernetes and
+      OpenShift
+    digest: a857d30709163dcaf5981ff8300f9da0f9f742bbd51303c7cfdc590145e3cd45
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://code.visualstudio.com/assets/images/code-stable.png
+    keywords:
+    - vscode
+    - code
+    - workspace
+    - python
+    - java
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: code-server
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/code-server-0.1.27/code-server-0.1.27.tgz
+    version: 0.1.27
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-08T10:01:40.142087492Z"
     description: A Helm chart to deploy VisualStudio Code server on Kubernetes and
       OpenShift
@@ -552,6 +578,30 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-10T10:45:28.507683052Z"
+    description: A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks
+      on OpenShift and Kubernetes
+    digest: 05472c3593bb485b78a39b09182a823f82c76d937cab280f562c2fababa75dea
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
+    keywords:
+    - jupyterlab
+    - jupyter
+    - notebook
+    - workspace
+    - python
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: jupyterlab
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.14/jupyterlab-0.1.14.tgz
+    version: 0.1.14
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-08T10:10:38.252611568Z"
     description: A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks
       on OpenShift and Kubernetes
@@ -807,6 +857,33 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 3.2.0
+    created: "2021-09-10T10:45:28.645424221Z"
+    description: 'A Helm chart to deploy RStudio on Kubernetes and OpenShift. Most
+      images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
+      | rocker/rstudio | rocker/tidyverse | ghcr.io/maastrichtu-ids/rstudio '
+    digest: 509d2ae036fdd488c71ce53bf3d8ad5ab7d9929cc3d8d0170c6cda82d2be7c4c
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png
+    keywords:
+    - vscode
+    - code
+    - workspace
+    - python
+    - java
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: rstudio
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/rstudio-0.1.13/rstudio-0.1.13.tgz
+    version: 0.1.13
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 3.2.0
     created: "2021-09-08T10:01:40.405705592Z"
     description: 'A Helm chart to deploy RStudio on Kubernetes and OpenShift. Most
       images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
@@ -1017,6 +1094,31 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-09-10T10:45:28.764057731Z"
+    description: 'A generic reuseable Helm chart for deploying almost any dockerized
+      application exposing a web interface to a HTTPS route on OpenShift and Kubernetes '
+    digest: 00c6b7de132a6cbe19ac8fae01f2c352518272c7891edcafd8904031f5fac60e
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Logo_Semantic_Web.svg/1024px-Logo_Semantic_Web.svg.png
+    keywords:
+    - webapp
+    - web application
+    - generic
+    - docker
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: webapp
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.8/webapp-0.1.8.tgz
+    version: 0.1.8
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-09-08T10:44:17.983269934Z"
     description: 'A generic reuseable Helm chart for deploying almost any dockerized
       application exposing a web interface to a HTTPS route on OpenShift and Kubernetes '
@@ -1213,4 +1315,4 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-08T10:44:17.983460436Z"
+generated: "2021-09-10T10:45:28.764339235Z"
