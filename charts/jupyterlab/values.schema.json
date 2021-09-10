@@ -39,6 +39,11 @@
                     "type": "string",
                     "title": "Image pull policy",
                     "description": "Describe when the image is pulled: Always, IfNotPresent, Never."
+                },
+                "command": {
+                    "type": "string",
+                    "title": "Start command",
+                    "description": "Override the command used when the image starts (aka. entrypoint)"
                 }
             },
             "additionalProperties": true
@@ -202,14 +207,19 @@
                     "title": "Limits",
                     "additionalProperties": true,
                     "properties": {
-                    "cpu": {
-                        "type": "string",
-                        "title": "CPU"
-                    },
-                    "memory": {
-                        "type": "string",
-                        "title": "Memory"
-                    }
+                        "memory": {
+                            "type": "string",
+                            "title": "Memory"
+                        },
+                        "cpu": {
+                            "type": "string",
+                            "title": "CPU"
+                        },
+                        "nvidia.com/gpu": {
+                            "type": "string",
+                            "title": "GPU",
+                            "description": "You need to first request GPU quota to enable GPU for your JupyterLab"
+                        }
                     }
                 },
                 "requests": {
@@ -217,14 +227,19 @@
                     "title": "Requests",
                     "additionalProperties": true,
                     "properties": {
-                    "cpu": {
-                        "type": "string",
-                        "title": "CPU"
-                    },
-                    "memory": {
-                        "type": "string",
-                        "title": "Memory"
-                    }
+                        "memory": {
+                            "type": "string",
+                            "title": "Memory"
+                        },
+                        "cpu": {
+                            "type": "string",
+                            "title": "CPU"
+                        },
+                        "nvidia.com/gpu": {
+                            "type": "string",
+                            "title": "GPU",
+                            "description": "You need to first request GPU quota to enable GPU for your JupyterLab"
+                        }
                     }
                 }
             }

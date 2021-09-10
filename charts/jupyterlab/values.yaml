@@ -12,6 +12,7 @@ image:
   repository: ghcr.io/maastrichtu-ids/jupyterlab
   tag: "latest"
   pullPolicy: IfNotPresent
+  # command: "jupyter lab --allow-root --ip=0.0.0.0 --no-browser"
 
 storage:
   enabled: true
@@ -74,6 +75,11 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+  # Assign a GPU to this JupyterLab (requires to have GPU quota in the project):
+  # requests:
+  #   nvidia.com/gpu: '1'
+  # limits:
+  #   nvidia.com/gpu: '1'
 
 podSecurityContext: {}
   # fsGroup: 2000

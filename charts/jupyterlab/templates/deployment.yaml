@@ -94,7 +94,7 @@ spec:
         {{- if .Values.storage.enabled }}
         - name: data
           persistentVolumeClaim:
-            claimName: {{ include "webapp.fullname" . }}
+            claimName: {{ include "jupyterlab.fullname" . }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

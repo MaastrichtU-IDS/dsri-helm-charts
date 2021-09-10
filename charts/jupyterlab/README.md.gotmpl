@@ -6,6 +6,17 @@
 
 {{ template "chart.description" . }}
 
+With this Helm chart you can easily deploy any Docker image based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), here are a few examples:
+- ghcr.io/maastrichtu-ids/jupyterlab (with Java and SPARQL kernels)
+- jupyter/minimal-notebook
+- jupyter/scipy-notebook
+- jupyter/datascience-notebook (with Julia kernel)
+- jupyter/tensorflow-notebook
+- jupyter/r-notebook
+- jupyter/pyspark-notebook
+- jupyter/all-spark-notebook
+
+You can also extend those images to build a custom one with all the packages you need already installed, checkout https://github.com/MaastrichtU-IDS/jupyterlab for an example of a custom image build.
 
 ## Installing the Chart
 
