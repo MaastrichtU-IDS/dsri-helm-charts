@@ -41,9 +41,12 @@
                     "description": "Describe when the image is pulled: Always, IfNotPresent, Never."
                 },
                 "command": {
-                    "type": "string",
+                    "type": "array",
                     "title": "Start command",
-                    "description": "Override the command used when the image starts (aka. entrypoint)"
+                    "description": "Override the command used when the image starts (aka. entrypoint)",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "additionalProperties": true
@@ -216,7 +219,7 @@
                             "title": "CPU"
                         },
                         "nvidia.com/gpu": {
-                            "type": "string",
+                            "type": "integer",
                             "title": "GPU",
                             "description": "You need to first request GPU quota to enable GPU for your JupyterLab"
                         }
@@ -236,7 +239,7 @@
                             "title": "CPU"
                         },
                         "nvidia.com/gpu": {
-                            "type": "string",
+                            "type": "integer",
                             "title": "GPU",
                             "description": "You need to first request GPU quota to enable GPU for your JupyterLab"
                         }

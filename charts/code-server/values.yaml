@@ -43,9 +43,13 @@ openshiftRoute:
 ingress:
   enabled: false
   annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths: []
+  # Host config specific to OpenShift
+  openshiftHost:
+    project: workspace-vemonet
+    clusterUrl: apps.dsri2.unimaas.nl
+  # hosts:
+  #   - host: "code-server-workspace-vemonet.apps.dsri2.unimaas.nl"
+  #     paths: ["/"]
   tls: []
 
 extraEnvs: []

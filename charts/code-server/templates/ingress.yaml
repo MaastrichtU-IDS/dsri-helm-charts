@@ -25,6 +25,10 @@ spec:
         {{- end }}
       secretName: {{ .secretName }}
     {{- end }}
+    {{- if .Values.ingress.openshiftHost }}
+    - hosts: 
+      - "{{ $fullName }}-{{ .Values.ingress.openshiftHost.project }}.{{ .Values.ingress.openshiftHost.clusterUrl }}"
+    {{- end }}
   {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
@@ -37,5 +41,14 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
           {{- end }}
+    {{- end }}
+    {{- if .Values.ingress.openshiftHost }}
+    - host: "{{ $fullName }}-{{ .Values.ingress.openshiftHost.project }}-{{ .Values.ingress.openshiftHost.clusterUrl }}"
+      http:
+        paths:
+          - path: "/"
+            backend:
+              serviceName: {{ $fullName }}
+              servicePort: {{ $svcPort }}
     {{- end }}
   {{- end }}

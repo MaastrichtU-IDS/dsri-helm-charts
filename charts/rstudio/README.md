@@ -8,7 +8,7 @@ Most images based on rocker can be used, such as: bioconductor/bioconductor_dock
 
 With this Helm chart you can easily deploy any Docker image based on the popular [RStudio rocker images](https://hub.docker.com/r/rocker/rstudio), here are a few examples:
 - ghcr.io/maastrichtu-ids/rstudio
-- bioconductor/bioconductor_docker:devel
+- bioconductor/bioconductor_docker
 - rocker/rstudio
 - rocker/tidyverse
 

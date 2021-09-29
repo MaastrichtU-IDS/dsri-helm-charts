@@ -50,12 +50,12 @@ The following table lists the configurable parameters of the code-server chart a
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
 | ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
-| ingress.tls | list | `[]` |  |
+| ingress.enabled | bool | `true` |  |
+| ingress.openshiftHost.clusterUrl | string | `"apps.dsri2.unimaas.nl"` |  |
+| ingress.openshiftHost.project | string | `"workspace-vemonet"` |  |
+| ingress.tls | list | `[]` |    - host: "code-server-workspace-vemonet.apps.dsri2.unimaas.nl"     paths: ["/"] |
 | nodeSelector | object | `{}` |  |
-| openshiftRoute.enabled | bool | `true` |  |
+| openshiftRoute.enabled | bool | `false` |  |
 | openshiftRoute.host | string | `""` |  |
 | openshiftRoute.path | string | `""` |  |
 | openshiftRoute.tls.enabled | bool | `true` |  |

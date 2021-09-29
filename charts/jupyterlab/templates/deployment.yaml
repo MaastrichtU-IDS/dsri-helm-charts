@@ -33,10 +33,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: {{ .Values.storage.mountPath }}
           command:
-            - "start-notebook.sh"
-            - "--no-browser"
-            - "--ip=0.0.0.0"
-            - "--config=/etc/jupyter/openshift/jupyter_notebook_config.py"
+            {{- toYaml .Values.image.command | nindent 12 }}
           env:
             - name: JUPYTER_TOKEN
               valueFrom:
