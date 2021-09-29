@@ -15,6 +15,16 @@
             "title": "Git repository URL (optional)",
             "description": "URL of a git repository to clone in the workspace."
         },
+        "gitName": {
+            "type": "string",
+            "title": "Git user name",
+            "description": "The name used when you commit with git."
+        },
+        "gitEmail": {
+            "type": "string",
+            "title": "Git user email",
+            "description": "The email used when you commit with git."
+        },
         "image": {
             "type": "object",
             "title": "Docker image",

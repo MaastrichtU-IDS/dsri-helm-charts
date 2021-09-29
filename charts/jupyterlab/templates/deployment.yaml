@@ -46,6 +46,10 @@ spec:
               value: "yes"
             - name: GIT_URL
               value: {{ .Values.gitUrl }}
+            - name: GIT_NAME
+              value: {{ .Values.gitName }}
+            - name: GIT_EMAIL
+              value: {{ .Values.gitEmail }}
             {{- range .Values.extraEnvs }}
             - name: {{ toString .name }}
               value: {{ toString .value }}
