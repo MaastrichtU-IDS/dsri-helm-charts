@@ -209,6 +209,29 @@
                 }
             }
         },
+        "extraStorage": {
+            "type": "array",
+            "title": "Extra storages",
+            "description": "Additional persistent volumes to mount to the container.",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "mountPath": {
+                    "type": "string",
+                    "title": "mountPath"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "title": "readOnly"
+                }
+                }
+            }
+        },
         "resources": {
             "type": "object",
             "title": "Resources limits",

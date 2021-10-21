@@ -85,6 +85,10 @@ spec:
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
             {{- end }}
+            {{- range .Values.extraStorage }}
+            - name: {{ toString .name }}
+              mountPath: {{ toString .mountPath }}
+            {{- end }}
       volumes:
         - name: configs
           configMap:
@@ -96,6 +100,12 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "jupyterlab.fullname" . }}
+        {{- end }}
+        {{- range .Values.extraStorage }}
+        - name: {{ toString .name }}
+          persistentVolumeClaim:
+            claimName: {{ toString .name }}
+            readOnly: {{ toString .readOnly }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
