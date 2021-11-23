@@ -630,6 +630,30 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-11-23T16:52:16.915329458Z"
+    description: A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks
+      on OpenShift and Kubernetes
+    digest: c34c25a0f9bddbbcb2079fdd3ed5280f0d69b0a1421533e148faefc8b17dcd9a
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
+    keywords:
+    - jupyterlab
+    - jupyter
+    - notebook
+    - workspace
+    - python
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: jupyterlab
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.21/jupyterlab-0.1.21.tgz
+    version: 0.1.21
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-11-23T16:40:32.541574071Z"
     description: A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks
       on OpenShift and Kubernetes
@@ -1566,4 +1590,4 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-23T16:40:32.541926879Z"
+generated: "2021-11-23T16:52:16.915693755Z"
