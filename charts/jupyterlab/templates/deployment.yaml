@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        date: "{{ .Release.Time }}"
+        date: "{{ now }}"
         {{- include "jupyterlab.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
