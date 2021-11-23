@@ -194,7 +194,7 @@
         "resources": {
             "type": "object",
             "title": "Resources limits",
-            "description": "Set limits for CPU or GPU",
+            "description": "Set limits for Memory, CPU, or GPU",
             "additionalProperties": true,
             "properties": {
                 "limits": {
