@@ -16,7 +16,6 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        date: "{{ now }}"
         {{- include "jupyterlab.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -51,6 +50,8 @@ spec:
               value: {{ .Values.gitName }}
             - name: GIT_EMAIL
               value: {{ .Values.gitEmail }}
+            - name: RELEASE_DATE
+              value: "{{ now }}"
             {{- range .Values.extraEnvs }}
             - name: {{ toString .name }}
               value: {{ toString .value }}

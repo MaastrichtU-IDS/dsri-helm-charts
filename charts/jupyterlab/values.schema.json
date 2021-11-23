@@ -64,7 +64,7 @@
         "service": {
             "type": "object",
             "title": "Service configuration",
-            "description": "Configure on which port the application will be served.",
+            "description": "Configure on which port the application will be served, and the route.",
             "required": [
                 "type",
                 "port"
