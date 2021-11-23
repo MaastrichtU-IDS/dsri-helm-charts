@@ -85,26 +85,6 @@
             "type": "object",
             "title": "Service Account",
             "description": "Configure the Kubernetes service account running the application (anyuid by default for OpenShift)",
-            "required": [
-                "name",
-                "create"
-            ],
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "title": "Service account name",
-                    "description": "Name of the service account to use"
-                },
-                "create": {
-                    "type": "boolean",
-                    "title": "Create the service account"
-                },
-                "annotations": {
-                    "type": "object",
-                    "title": "annotations",
-                    "additionalProperties": true
-                }
-            },
             "additionalProperties": true
         },
         "storage": {
@@ -129,6 +109,29 @@
                     "type": "string",
                     "title": "Mount path of the persistent storage",
                     "description": "mount path of the persistent storage, usually in the home folder"
+                }
+            },
+            "extraStorage": {
+                "type": "array",
+                "title": "Extra storages",
+                "description": "Additional persistent volumes to mount to the container.",
+                "additionalItems": true,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "name"
+                    },
+                    "mountPath": {
+                        "type": "string",
+                        "title": "mountPath"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
+                        "title": "readOnly"
+                    }
+                    }
                 }
             },
             "additionalProperties": true
@@ -205,29 +208,6 @@
                 "value": {
                     "type": "string",
                     "title": "value"
-                }
-                }
-            }
-        },
-        "extraStorage": {
-            "type": "array",
-            "title": "Extra storages",
-            "description": "Additional persistent volumes to mount to the container.",
-            "additionalItems": true,
-            "items": {
-                "type": "object",
-                "properties": {
-                "name": {
-                    "type": "string",
-                    "title": "name"
-                },
-                "mountPath": {
-                    "type": "string",
-                    "title": "mountPath"
-                },
-                "readOnly": {
-                    "type": "boolean",
-                    "title": "readOnly"
                 }
                 }
             }

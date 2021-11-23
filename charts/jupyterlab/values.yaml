@@ -27,6 +27,11 @@ storage:
   enabled: true
   size: 5Gi
   mountPath: /home/jovyan/work
+  extraStorage: []
+  # extraStorage: 
+  #   - name: easybuild-data
+  #     mountPath: /opt/apps/easybuild
+  #     readOnly: true
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -72,12 +77,6 @@ extraEnvs: []
 # extraEnvs: 
 #   - name: PASSWORD
 #     value: mypassword
-
-extraStorage: []
-# extraStorage: 
-#   - name: easybuild-data
-#     mountPath: /opt/apps/easybuild
-#     readOnly: true
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

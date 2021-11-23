@@ -85,7 +85,7 @@ spec:
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
             {{- end }}
-            {{- range .Values.extraStorage }}
+            {{- range .Values.storage.extraStorage }}
             - name: {{ toString .name }}
               mountPath: {{ toString .mountPath }}
             {{- end }}
@@ -101,7 +101,7 @@ spec:
           persistentVolumeClaim:
             claimName: {{ include "jupyterlab.fullname" . }}
         {{- end }}
-        {{- range .Values.extraStorage }}
+        {{- range .Values.storage.extraStorage }}
         - name: {{ toString .name }}
           persistentVolumeClaim:
             claimName: {{ toString .name }}
