@@ -77,6 +77,63 @@
                 "type": {
                     "type": "string",
                     "title": "Service type"
+                },
+                "openshiftRoute": {
+                    "type": "object",
+                    "title": "Expose route on OpenShift",
+                    "description": "Enabled by default",
+                    "required": [
+                        "enabled",
+                        "tls"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "title": "Enabled"
+                        },
+                        "host": {
+                            "type": "string",
+                            "title": "Host of the route"
+                        },
+                        "path": {
+                            "type": "string",
+                            "title": "path of the route"
+                        },
+                        "wildcardPolicy": {
+                            "type": "string",
+                            "title": "wildcard policy"
+                        },
+                        "tls": {
+                            "type": "object",
+                            "title": "TLS configuration",
+                            "description": "To enable HTTPS (enabled by default).",
+                            "required": [
+                                "enabled"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "title": "Enabled"
+                                },
+                                "termination": {
+                                    "type": "string",
+                                    "title": "Termination"
+                                },
+                                "insecureEdgeTerminationPolicy": {
+                                    "type": "string",
+                                    "title": "insecureEdgeTerminationPolicy"
+                                }
+                            },
+                            "additionalProperties": true
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "ingress": {
+                    "type": "object",
+                    "title": "Ingress configuration",
+                    "description": "For routing on Kubernetes (disabled by default)",
+                    "additionalProperties": true
                 }
             },
             "additionalProperties": true
@@ -109,88 +166,31 @@
                     "type": "string",
                     "title": "Mount path of the persistent storage",
                     "description": "mount path of the persistent storage, usually in the home folder"
-                }
-            },
-            "extraStorage": {
-                "type": "array",
-                "title": "Extra storages",
-                "description": "Additional persistent volumes to mount to the container.",
-                "additionalItems": true,
-                "items": {
-                    "type": "object",
-                    "properties": {
-                    "name": {
-                        "type": "string",
-                        "title": "name"
-                    },
-                    "mountPath": {
-                        "type": "string",
-                        "title": "mountPath"
-                    },
-                    "readOnly": {
-                        "type": "boolean",
-                        "title": "readOnly"
-                    }
-                    }
-                }
-            },
-            "additionalProperties": true
-        },
-        "openshiftRoute": {
-            "type": "object",
-            "title": "Expose route on OpenShift",
-            "description": "Enabled by default",
-            "required": [
-                "enabled",
-                "tls"
-            ],
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "title": "Enabled"
                 },
-                "host": {
-                    "type": "string",
-                    "title": "Host of the route"
-                },
-                "path": {
-                    "type": "string",
-                    "title": "path of the route"
-                },
-                "wildcardPolicy": {
-                    "type": "string",
-                    "title": "wildcard policy"
-                },
-                "tls": {
-                    "type": "object",
-                    "title": "TLS configuration",
-                    "description": "To enable HTTPS (enabled by default).",
-                    "required": [
-                        "enabled"
-                    ],
-                    "properties": {
-                        "enabled": {
+                "extraStorage": {
+                    "type": "array",
+                    "title": "Extra storages",
+                    "description": "Additional persistent volumes to mount to the container.",
+                    "additionalItems": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "name"
+                        },
+                        "mountPath": {
+                            "type": "string",
+                            "title": "mountPath"
+                        },
+                        "readOnly": {
                             "type": "boolean",
-                            "title": "Enabled"
-                        },
-                        "termination": {
-                            "type": "string",
-                            "title": "Termination"
-                        },
-                        "insecureEdgeTerminationPolicy": {
-                            "type": "string",
-                            "title": "insecureEdgeTerminationPolicy"
+                            "title": "readOnly"
                         }
-                    },
-                    "additionalProperties": true
+                        }
+                    }
                 }
             },
-            "additionalProperties": true
-        },
-        "ingress": {
-            "type": "object",
-            "title": "Ingress configuration",
-            "description": "For routing on Kubernetes (disabled by default)",
             "additionalProperties": true
         },
         "extraEnvs": {

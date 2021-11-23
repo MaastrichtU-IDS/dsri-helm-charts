@@ -32,7 +32,7 @@ To deploy the chart with the release name `jupyterlab`:
 ```bash
 helm install jupyterlab dsri/jupyterlab \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true \
+  --set service.openshiftRoute.enabled=true \
   --set password=changeme
 ```
 
@@ -61,19 +61,19 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
-| ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
-| ingress.tls | list | `[]` |  |
+| service.ingress.annotations | object | `{}` |  |
+| service.ingress.enabled | bool | `false` |  |
+| service.ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| service.ingress.hosts[0].paths | list | `[]` |  |
+| service.ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
-| openshiftRoute.enabled | bool | `true` |  |
-| openshiftRoute.host | string | `""` |  |
-| openshiftRoute.path | string | `""` |  |
-| openshiftRoute.tls.enabled | bool | `true` |  |
-| openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
-| openshiftRoute.tls.termination | string | `"edge"` |  |
-| openshiftRoute.wildcardPolicy | string | `"None"` |  |
+| service.openshiftRoute.enabled | bool | `true` |  |
+| service.openshiftRoute.host | string | `""` |  |
+| service.openshiftRoute.path | string | `""` |  |
+| service.openshiftRoute.tls.enabled | bool | `true` |  |
+| service.openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
+| service.openshiftRoute.tls.termination | string | `"edge"` |  |
+| service.openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | password | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |

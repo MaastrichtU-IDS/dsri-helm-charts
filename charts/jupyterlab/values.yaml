@@ -55,23 +55,23 @@ service:
   port: 8888
   type: ClusterIP
 
-openshiftRoute:
-  enabled: true
-  host: ""
-  path: ""
-  wildcardPolicy: None
-  tls:
+  openshiftRoute:
     enabled: true
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+    host: ""
+    path: ""
+    wildcardPolicy: None
+    tls:
+      enabled: true
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
 
-ingress:
-  enabled: false
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
+  ingress:
+    enabled: false
+    annotations: {}
+    hosts:
+      - host: chart-example.local
+        paths: []
+    tls: []
 
 extraEnvs: []
 # extraEnvs: 
