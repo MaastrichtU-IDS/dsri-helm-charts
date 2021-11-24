@@ -82,7 +82,7 @@ Generate a `README.md` for all charts:
 ~/go/bin/helm-docs
 ```
 
-Automatically generate docs when commiting:
+Automatically generate docs when commiting using pre-commit hooks:
 
 ```bash
 pip install pre-commit
@@ -106,6 +106,8 @@ spec:
     url: https://maastrichtu-ids.github.io/dsri-helm-charts/
 EOF
 ```
+
+## Credits
 
 JSON schema generated using https://www.jsonschema.net
 

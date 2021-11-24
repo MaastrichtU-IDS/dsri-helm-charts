@@ -55,6 +55,12 @@ helm install jupyterlab-gpu dsri/jupyterlab \
   --set password=changeme
 ```
 
+If you deployed your application with an OpenShift Route, you can retrieve the URL of the deloyed application with this command, after changing `jupyterlab` by your application name:
+
+```bash
+echo https://$(oc get route --selector app.kubernetes.io/instance=jupyterlab --no-headers -o=custom-columns=HOST:.spec.host)
+```
+
 ## Checking the logs
 
 Get the events related to your chart deployment (replace oc by `kubectl` for Kubernetes):
@@ -133,4 +139,5 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | storage.extraStorage | list | `[]` |  |
 | storage.mountPath | string | `"/home/jovyan/work"` |  |
 | storage.size | string | `"5Gi"` |  |
+| storage.workingDir | string | `""` |  |
 | tolerations | list | `[]` |  |

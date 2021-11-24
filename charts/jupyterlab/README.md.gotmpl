@@ -57,6 +57,12 @@ helm install {{ template "chart.name" . }}-gpu dsri/{{ template "chart.name" . }
   --set password=changeme
 ```
 
+If you deployed your application with an OpenShift Route, you can retrieve the URL of the deloyed application with this command, after changing `{{ template "chart.name" . }}` by your application name:
+
+```bash
+echo https://$(oc get route --selector app.kubernetes.io/instance={{ template "chart.name" . }} --no-headers -o=custom-columns=HOST:.spec.host)
+```
+
 ## Checking the logs
 
 Get the events related to your chart deployment (replace oc by `kubectl` for Kubernetes):

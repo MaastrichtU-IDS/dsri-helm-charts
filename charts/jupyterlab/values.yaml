@@ -24,6 +24,8 @@ storage:
   enabled: true
   size: 5Gi
   mountPath: /home/jovyan/work
+  # Let workspace empty to use the mountPath as workspace
+  workingDir: ""
   extraStorage: []
   # extraStorage: 
   #   - name: easybuild-data

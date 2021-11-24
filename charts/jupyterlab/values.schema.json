@@ -172,6 +172,11 @@
                     "title": "Mount path of the persistent storage",
                     "description": "mount path of the persistent storage, usually in the home folder"
                 },
+                "workingDir": {
+                    "type": "string",
+                    "title": "Folder used as working directory",
+                    "description": "Folder used as working directory and workspace by JupyterLab, let empty to use the mountPath"
+                },
                 "extraStorage": {
                     "type": "array",
                     "title": "Extra storages",
