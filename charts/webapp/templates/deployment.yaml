@@ -35,6 +35,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: {{ .Values.storage.mountPath }}
           env:
+            # To enable updating the image: https://github.com/kubernetes/kubernetes/issues/33664
+            - name: RELEASE_DATE
+              value: "{{ now }}"
             {{- range .Values.extraEnvs }}
             - name: {{ toString .name }}
               value: {{ toString .value }}

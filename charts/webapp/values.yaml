@@ -28,23 +28,23 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
 
-openshiftRoute:
-  enabled: true
-  host: ""
-  path: ""
-  wildcardPolicy: None
-  tls:
+  openshiftRoute:
     enabled: true
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+    host: ""
+    path: ""
+    wildcardPolicy: None
+    tls:
+      enabled: true
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
 
-ingress:
-  enabled: false
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
+  ingress:
+    enabled: false
+    annotations: {}
+    hosts:
+      - host: chart-example.local
+        paths: []
+    tls: []
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

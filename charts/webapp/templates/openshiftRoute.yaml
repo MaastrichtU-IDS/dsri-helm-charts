@@ -1,4 +1,4 @@
-{{- if .Values.openshiftRoute.enabled -}}
+{{- if .Values.service.openshiftRoute.enabled -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -17,14 +17,14 @@ status:
   ingress:
     - host: ""
 spec:
-  host: {{ .Values.openshiftRoute.host }}
-  path: {{ .Values.openshiftRoute.path }}
-  wildcardPolicy: {{ .Values.openshiftRoute.wildcardPolicy }}
+  host: {{ .Values.service.openshiftRoute.host }}
+  path: {{ .Values.service.openshiftRoute.path }}
+  wildcardPolicy: {{ .Values.service.openshiftRoute.wildcardPolicy }}
   port:
     targetPort: http
-{{- if .Values.openshiftRoute.tls.enabled }}
+{{- if .Values.service.openshiftRoute.tls.enabled }}
   tls:
-{{- with .Values.openshiftRoute.tls }}
+{{- with .Values.service.openshiftRoute.tls }}
     termination: {{ .termination }}
     insecureEdgeTerminationPolicy: {{ .insecureEdgeTerminationPolicy }}
 {{- end}}

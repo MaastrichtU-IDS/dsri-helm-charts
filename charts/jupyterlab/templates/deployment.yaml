@@ -50,6 +50,7 @@ spec:
               value: {{ .Values.gitName }}
             - name: GIT_EMAIL
               value: {{ .Values.gitEmail }}
+            # To enable updating the image: https://github.com/kubernetes/kubernetes/issues/33664
             - name: RELEASE_DATE
               value: "{{ now }}"
             {{- range .Values.extraEnvs }}

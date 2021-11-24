@@ -31,12 +31,21 @@ To deploy the chart with the release name `{{ template "chart.name" . }}`:
 ```bash
 helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true \
+  --set service.openshiftRoute.enabled=true \
   --set password=changeme
 ```
 
 The command deploys {{ template "chart.name" . }} on the OpenShift or Kubernetes cluster in the default configuration.
 
+## Updating the image in a deployed chart
+
+To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart. 
+
+Then you can update the image in the running JupyterLab:
+
+```bash
+helm upgrade {{ template "chart.name" . }} dsri/{{ template "chart.name" . }}
+```
 
 ## Uninstalling the Chart
 

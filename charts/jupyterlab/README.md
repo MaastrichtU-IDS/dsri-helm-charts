@@ -38,11 +38,21 @@ helm install jupyterlab dsri/jupyterlab \
 
 The command deploys jupyterlab on the OpenShift or Kubernetes cluster in the default configuration.
 
+## Updating the image in a deployed chart
+
+To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart.
+
+Then you can update the image in the running JupyterLab:
+
+```bash
+helm upgrade jupyterlab dsri/jupyterlab
+```
+
 ## Uninstalling the Chart
 
 To uninstall/delete the `jupyterlab` deployment:
 
-```
+```bash
 helm delete jupyterlab
 ```
 
@@ -56,17 +66,28 @@ The following table lists the configurable parameters of the jupyterlab chart an
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | extraEnvs | list | `[]` |  |
+| gitEmail | string | `"default@maastrichtuniversity.nl"` |  |
+| gitName | string | `"Default user"` |  |
 | gitUrl | string | `""` |  |
+| image.command[0] | string | `"start-notebook.sh"` |  |
+| image.command[1] | string | `"--no-browser"` |  |
+| image.command[2] | string | `"--ip=0.0.0.0"` |  |
+| image.command[3] | string | `"--config=/etc/jupyter/openshift/jupyter_notebook_config.py"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  |
+| nodeSelector | object | `{}` |  |
+| password | string | `""` |  |
+| podAnnotations | object | `{}` |  |
+| podSecurityContext | object | `{}` |  |
+| resources | object | `{}` |  |
+| securityContext.runAsUser | int | `0` |  |
 | service.ingress.annotations | object | `{}` |  |
 | service.ingress.enabled | bool | `false` |  |
 | service.ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | service.ingress.hosts[0].paths | list | `[]` |  |
 | service.ingress.tls | list | `[]` |  |
-| nodeSelector | object | `{}` |  |
 | service.openshiftRoute.enabled | bool | `true` |  |
 | service.openshiftRoute.host | string | `""` |  |
 | service.openshiftRoute.path | string | `""` |  |
@@ -74,17 +95,13 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | service.openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
 | service.openshiftRoute.tls.termination | string | `"edge"` |  |
 | service.openshiftRoute.wildcardPolicy | string | `"None"` |  |
-| password | string | `""` |  |
-| podAnnotations | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
-| resources | object | `{}` |  |
-| securityContext.runAsUser | int | `0` |  |
 | service.port | int | `8888` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
 | storage.enabled | bool | `true` |  |
+| storage.extraStorage | list | `[]` |  |
 | storage.mountPath | string | `"/home/jovyan/work"` |  |
 | storage.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |

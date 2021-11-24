@@ -30,11 +30,21 @@ To deploy the chart with the release name `rstudio`:
 ```bash
 helm install rstudio dsri/rstudio \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true \
+  --set service.openshiftRoute.enabled=true \
   --set password=changeme
 ```
 
 The command deploys rstudio on the OpenShift or Kubernetes cluster in the default configuration.
+
+## Updating the image in a deployed chart
+
+To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart.
+
+Then you can update the image in the running JupyterLab:
+
+```bash
+helm upgrade rstudio dsri/rstudio
+```
 
 ## Uninstalling the Chart
 
@@ -58,25 +68,25 @@ The following table lists the configurable parameters of the rstudio chart and t
 | image.repository | string | `"ghcr.io/maastrichtu-ids/rstudio"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
-| ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
-| ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
 | openblasNumThreads | int | `1` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
-| openshiftRoute.enabled | bool | `true` |  |
-| openshiftRoute.host | string | `""` |  |
-| openshiftRoute.path | string | `""` |  |
-| openshiftRoute.tls.enabled | bool | `true` |  |
-| openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
-| openshiftRoute.tls.termination | string | `"edge"` |  |
-| openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | password | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
+| service.ingress.annotations | object | `{}` |  |
+| service.ingress.enabled | bool | `false` |  |
+| service.ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| service.ingress.hosts[0].paths | list | `[]` |  |
+| service.ingress.tls | list | `[]` |  |
+| service.openshiftRoute.enabled | bool | `true` |  |
+| service.openshiftRoute.host | string | `""` |  |
+| service.openshiftRoute.path | string | `""` |  |
+| service.openshiftRoute.tls.enabled | bool | `true` |  |
+| service.openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
+| service.openshiftRoute.tls.termination | string | `"edge"` |  |
+| service.openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | service.port | int | `8787` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |

@@ -20,11 +20,21 @@ To deploy the chart with the release name `webapp`:
 ```bash
 helm install webapp dsri/webapp \
   --set serviceAccount.name=anyuid \
-  --set openshiftRoute.enabled=true \
+  --set service.openshiftRoute.enabled=true \
   --set service.port=80
 ```
 
 The command deploys webapp on the OpenShift or Kubernetes cluster in the default configuration.
+
+## Updating the image in a deployed chart
+
+To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart.
+
+Then you can update the image in the running JupyterLab:
+
+```bash
+helm upgrade webapp dsri/webapp
+```
 
 ## Uninstalling the Chart
 
@@ -49,19 +59,7 @@ The following table lists the configurable parameters of the webapp chart and th
 | image.repository | string | `"ghcr.io/maastrichtu-ids/code-server"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
-| ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| ingress.hosts[0].paths | list | `[]` |  |
-| ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
-| openshiftRoute.enabled | bool | `true` |  |
-| openshiftRoute.host | string | `""` |  |
-| openshiftRoute.path | string | `""` |  |
-| openshiftRoute.tls.enabled | bool | `true` |  |
-| openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
-| openshiftRoute.tls.termination | string | `"edge"` |  |
-| openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` |  |
@@ -71,7 +69,19 @@ The following table lists the configurable parameters of the webapp chart and th
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
+| serviceAccount.ingress.annotations | object | `{}` |  |
+| serviceAccount.ingress.enabled | bool | `false` |  |
+| serviceAccount.ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| serviceAccount.ingress.hosts[0].paths | list | `[]` |  |
+| serviceAccount.ingress.tls | list | `[]` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
+| serviceAccount.openshiftRoute.enabled | bool | `true` |  |
+| serviceAccount.openshiftRoute.host | string | `""` |  |
+| serviceAccount.openshiftRoute.path | string | `""` |  |
+| serviceAccount.openshiftRoute.tls.enabled | bool | `true` |  |
+| serviceAccount.openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
+| serviceAccount.openshiftRoute.tls.termination | string | `"edge"` |  |
+| serviceAccount.openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/coder/project"` |  |
 | storage.size | string | `"5Gi"` |  |

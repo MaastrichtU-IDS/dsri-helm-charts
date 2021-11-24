@@ -44,6 +44,9 @@ spec:
               value: "TRUE"
             - name: OPENBLAS_NUM_THREADS
               value: "{{ toString .Values.openblasNumThreads }}"
+            # To enable updating the image: https://github.com/kubernetes/kubernetes/issues/33664
+            - name: RELEASE_DATE
+              value: "{{ now }}"
             {{- range .Values.extraEnvs }}
             - name: {{ toString .name }}
               value: {{ toString .value }}
