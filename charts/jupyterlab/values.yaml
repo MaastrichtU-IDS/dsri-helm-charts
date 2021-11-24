@@ -16,15 +16,9 @@ image:
   pullPolicy: IfNotPresent
   # Mount a jupyter_notebook_config.py to automatically clone $GIT_URL and install requirements on startup, this overrides command
   addJupyterConfig: false
-  command: null
-  # command: [
-  #   "start-notebook.sh", 
-  #   "--no-browser",
-  #   "--ip=0.0.0.0",
-  #   "--config=/etc/jupyter/jupyter_notebook_config.py"
-  # ]
+  command: []
+  # command: ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--config=/etc/jupyter/jupyter_notebook_config.py"]
   # command: "start-notebook.sh --no-browser --ip=0.0.0.0 --config=/etc/jupyter/jupyter_notebook_config.py"
-  # command: ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--no-browser", "--config=/etc/jupyter/jupyter_notebook_config.py"]
 
 storage:
   enabled: true

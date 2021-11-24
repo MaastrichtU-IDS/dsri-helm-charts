@@ -34,9 +34,12 @@ spec:
           workingDir: {{ .Values.storage.mountPath }}
           {{- if .Values.image.addJupyterConfig }}
           command: 
-            - "start-notebook.sh"
+            - "jupyter"
+            - "lab"
+            - "--allow-root"
             - "--no-browser"
             - "--ip=0.0.0.0"
+            - "--port=8888"
             - "--config=/etc/jupyter/jupyter_notebook_config.py"
           {{- else }}
           {{- if .Values.image.command }}

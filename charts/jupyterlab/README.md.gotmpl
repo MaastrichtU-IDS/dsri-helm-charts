@@ -57,6 +57,17 @@ helm install {{ template "chart.name" . }}-gpu dsri/{{ template "chart.name" . }
   --set password=changeme
 ```
 
+Get the events related to your chart deployment (replace oc by `kubectl` for Kubernetes):
+
+```bash
+oc get events | grep {{ template "chart.name" . }}
+```
+
+Get logs of the chart deployment:
+
+```bash
+oc logs deployment/{{ template "chart.name" . }} --tail 100
+```
 
 ## Updating the image in a deployed chart
 
