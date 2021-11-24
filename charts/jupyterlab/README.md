@@ -41,7 +41,19 @@ helm install jupyterlab dsri/jupyterlab \
   --set password=changeme
 ```
 
-To deploy the chart **on GPU** with the release name `jupyterlab-gpu` using the existing `anyuid` service account:
+You can also automatically clone a Git repository in the workspace by adding this to the previous command:
+
+```bash
+  --set gitUrl=https://github.com/MaastrichtU-IDS/dsri-demo
+```
+
+If you are not using a `ghcr.io/maastrichtu-ids/jupyterlab` image, you will need to also enable the `jupyter_notebook_config.py`:
+
+```bash
+  --set image.addJupyterConfig=true
+```
+
+You can also use this chart to deploy JupyterLab **on GPU** with the release name `jupyterlab-gpu` using the existing `anyuid` service account:
 
 ```bash
 helm install jupyterlab-gpu dsri/jupyterlab \

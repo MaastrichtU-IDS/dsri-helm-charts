@@ -13,7 +13,7 @@
         "gitUrl": {
             "type": "string",
             "title": "Git repository URL (optional)",
-            "description": "URL of a git repository to clone in the workspace."
+            "description": "URL of a git repository to clone in the workspace at startup, additionally environment.yml and requirements.txt files will be automatically installed if present in the repository."
         },
         "gitName": {
             "type": "string",
