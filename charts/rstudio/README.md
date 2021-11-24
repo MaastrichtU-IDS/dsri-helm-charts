@@ -18,7 +18,7 @@ You can also extend those images to build a custom one with all the packages you
 
 ## Installing the Chart
 
-To install the DSRI Helm Charts, if not already done:
+Install the DSRI Helm Charts on your machine, if not already done:
 
 ```bash
 helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
@@ -33,10 +33,11 @@ To deploy the chart with the release name `rstudio`:
 helm install rstudio dsri/rstudio \
   --set serviceAccount.name=anyuid \
   --set service.openshiftRoute.enabled=true \
+  --set image.repository=ghcr.io/maastrichtu-ids/rstudio \
+  --set image.tag=latest \
+  --set storage.mountPath=/home/rstudio \
   --set password=changeme
 ```
-
-The command deploys rstudio on the OpenShift or Kubernetes cluster in the default configuration.
 
 ## Updating the image in a deployed chart
 

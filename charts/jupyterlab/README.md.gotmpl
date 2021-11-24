@@ -22,7 +22,7 @@ You can also extend those images to build a custom one with all the packages you
 
 ## Installing the Chart
 
-To install the DSRI Helm Charts, if not already done:
+Install the DSRI Helm Charts on your machine, if not already done:
 
 ```bash
 helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
@@ -31,16 +31,32 @@ helm repo update
 
 ## Deploying the Chart
 
-To deploy the chart with the release name `{{ template "chart.name" . }}` using the existing `anyuid` service account:
+To deploy the chart **on CPU** with the release name `{{ template "chart.name" . }}` using the existing `anyuid` service account:
 
 ```bash
 helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
   --set serviceAccount.name=anyuid \
   --set service.openshiftRoute.enabled=true \
+  --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
+  --set image.tag=tensorflow \
+  --set storage.mountPath=/workspace \
   --set password=changeme
 ```
 
-The command deploys {{ template "chart.name" . }} on the OpenShift or Kubernetes cluster in the default configuration.
+To deploy the chart **on GPU** with the release name `{{ template "chart.name" . }}-gpu` using the existing `anyuid` service account:
+
+```bash
+helm install {{ template "chart.name" . }}-gpu dsri/{{ template "chart.name" . }} \
+  --set serviceAccount.name=anyuid \
+  --set service.openshiftRoute.enabled=true \
+  --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
+  --set image.tag=tensorflow \
+  --set storage.mountPath=/workspace \
+  --set resources.requests."nvidia\.com/gpu"=1 \
+  --set resources.limits."nvidia\.com/gpu"=1 \
+  --set password=changeme
+```
+
 
 ## Updating the image in a deployed chart
 

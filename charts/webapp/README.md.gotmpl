@@ -10,7 +10,7 @@ The aim of this Helm chart is to give an easy and straightforward way to deploy 
 
 ## Installing the Chart
 
-To install the DSRI Helm Charts, if not already done:
+Install the DSRI Helm Charts on your machine, if not already done:
 
 ```bash
 helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
@@ -26,14 +26,13 @@ helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
   --set serviceAccount.name=anyuid \
   --set service.openshiftRoute.enabled=true \
   --set service.port=8080 \
-  --set storage.mountPath=/home/coder/project \
   --set image.repository=ghcr.io/maastrichtu-ids/code-server \
   --set image.tag=latest \
+  --set storage.mountPath=/home/coder/project \
   --set extraEnvs[0].name=PASSWORD \
   --set extraEnvs[0].value=changeme
 ```
 
-The command deploys {{ template "chart.name" . }} on the OpenShift or Kubernetes cluster in the default configuration.
 
 ## Updating the image in a deployed chart
 

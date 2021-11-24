@@ -39,8 +39,10 @@ spec:
             - "--ip=0.0.0.0"
             - "--config=/etc/jupyter/jupyter_notebook_config.py"
           {{- else }}
+          {{- if .Values.image.command }}
           command:
             {{- toYaml .Values.image.command | nindent 12 }}
+          {{- end }}
           {{- end }}
           env:
             - name: JUPYTER_TOKEN

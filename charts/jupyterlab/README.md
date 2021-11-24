@@ -20,7 +20,7 @@ You can also extend those images to build a custom one with all the packages you
 
 ## Installing the Chart
 
-To install the DSRI Helm Charts, if not already done:
+Install the DSRI Helm Charts on your machine, if not already done:
 
 ```bash
 helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
@@ -29,16 +29,31 @@ helm repo update
 
 ## Deploying the Chart
 
-To deploy the chart with the release name `jupyterlab` using the existing `anyuid` service account:
+To deploy the chart **on CPU** with the release name `jupyterlab` using the existing `anyuid` service account:
 
 ```bash
 helm install jupyterlab dsri/jupyterlab \
   --set serviceAccount.name=anyuid \
   --set service.openshiftRoute.enabled=true \
+  --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
+  --set image.tag=tensorflow \
+  --set storage.mountPath=/workspace \
   --set password=changeme
 ```
 
-The command deploys jupyterlab on the OpenShift or Kubernetes cluster in the default configuration.
+To deploy the chart **on GPU** with the release name `jupyterlab-gpu` using the existing `anyuid` service account:
+
+```bash
+helm install jupyterlab-gpu dsri/jupyterlab \
+  --set serviceAccount.name=anyuid \
+  --set service.openshiftRoute.enabled=true \
+  --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
+  --set image.tag=tensorflow \
+  --set storage.mountPath=/workspace \
+  --set resources.requests."nvidia\.com/gpu"=1 \
+  --set resources.limits."nvidia\.com/gpu"=1 \
+  --set password=changeme
+```
 
 ## Updating the image in a deployed chart
 
@@ -72,10 +87,7 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | gitName | string | `"Default user"` |  |
 | gitUrl | string | `""` |  |
 | image.addJupyterConfig | bool | `false` |  |
-| image.command[0] | string | `"start-notebook.sh"` |  |
-| image.command[1] | string | `"--no-browser"` |  |
-| image.command[2] | string | `"--ip=0.0.0.0"` |  |
-| image.command[3] | string | `"--config=/etc/jupyter/jupyter_notebook_config.py"` |  |
+| image.command | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
 | image.tag | string | `"latest"` |  |

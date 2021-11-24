@@ -16,7 +16,7 @@ image:
   pullPolicy: IfNotPresent
   # Mount a jupyter_notebook_config.py to automatically clone $GIT_URL and install requirements on startup, this overrides command
   addJupyterConfig: false
-  command: []
+  command: null
   # command: [
   #   "start-notebook.sh", 
   #   "--no-browser",
