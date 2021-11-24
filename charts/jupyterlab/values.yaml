@@ -14,14 +14,16 @@ image:
   repository: ghcr.io/maastrichtu-ids/jupyterlab
   tag: "latest"
   pullPolicy: IfNotPresent
-  command: [
-    "start-notebook.sh", 
-    "--no-browser",
-    "--ip=0.0.0.0",
-    "--config=/etc/jupyter/openshift/jupyter_notebook_config.py"
-  ]
-  # command: "start-notebook.sh --no-browser --ip=0.0.0.0 --config=/etc/jupyter/openshift/jupyter_notebook_config.py"
-  # command: ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--no-browser"]
+  addJupyterConfig: false
+  command: []
+  # command: [
+  #   "start-notebook.sh", 
+  #   "--no-browser",
+  #   "--ip=0.0.0.0",
+  #   "--config=/etc/jupyter/jupyter_notebook_config.py"
+  # ]
+  # command: "start-notebook.sh --no-browser --ip=0.0.0.0 --config=/etc/jupyter/jupyter_notebook_config.py"
+  # command: ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--no-browser", "--config=/etc/jupyter/jupyter_notebook_config.py"]
 
 storage:
   enabled: true

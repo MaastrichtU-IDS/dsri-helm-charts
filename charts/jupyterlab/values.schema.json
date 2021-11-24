@@ -57,6 +57,11 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "addJupyterConfig": {
+                    "type": "boolean",
+                    "title": "Add jupyter_notebook_config.py",
+                    "description": "Mount a jupyter_notebook_config.py to automatically clone $GIT_URL and install requirements on startup"
                 }
             },
             "additionalProperties": true

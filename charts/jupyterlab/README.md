@@ -2,11 +2,13 @@
 
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)  ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
-A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks on OpenShift and Kubernetes
+A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks with root user on OpenShift and Kubernetes
 
-With this Helm chart you can easily deploy any Docker image based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), here are a few examples:
-- ghcr.io/maastrichtu-ids/jupyterlab (with Java and SPARQL kernels)
-- jupyter/minimal-notebook
+The aim of this Helm chart is to give an easy and straightforward way to deploy JupyterLab on OpenShift and Kubernetes clusters. The chart is currently mostly optimized and used in OpenShift/OKD clusters, let us know if you are using it with other Kubernetes distributions in the GitHub repository issues, we would love to hear about it!
+
+With this Helm chart you can easily deploy any JupyterLab Docker image as root user, including those based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), such as:
+- [ghcr.io/maastrichtu-ids/jupyterlab](https://github.com/MaastrichtU-IDS/jupyterlab) (our custom image for Data Science with VisualStudio Code, OpenRefine, conda integration, Python autocomplete, and additional Java and SPARQL kernels)
+- [jupyter/minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/base-notebook)
 - jupyter/scipy-notebook
 - jupyter/datascience-notebook (with Julia kernel)
 - jupyter/tensorflow-notebook
@@ -14,7 +16,7 @@ With this Helm chart you can easily deploy any Docker image based on the [offici
 - jupyter/pyspark-notebook
 - jupyter/all-spark-notebook
 
-You can also extend those images to build a custom one with all the packages you need already installed, checkout https://github.com/MaastrichtU-IDS/jupyterlab for an example of a custom image build.
+You can also extend those images to build a custom one with all the packages you need already installed, we recommend you to take a look at the instructions of our custom JupyterLab image at https://github.com/MaastrichtU-IDS/jupyterlab
 
 ## Installing the Chart
 
@@ -27,7 +29,7 @@ helm repo update
 
 ## Deploying the Chart
 
-To deploy the chart with the release name `jupyterlab`:
+To deploy the chart with the release name `jupyterlab` using the existing `anyuid` service account:
 
 ```bash
 helm install jupyterlab dsri/jupyterlab \
@@ -69,10 +71,11 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | gitEmail | string | `"default@maastrichtuniversity.nl"` |  |
 | gitName | string | `"Default user"` |  |
 | gitUrl | string | `""` |  |
+| image.addJupyterConfig | bool | `false` |  |
 | image.command[0] | string | `"start-notebook.sh"` |  |
 | image.command[1] | string | `"--no-browser"` |  |
 | image.command[2] | string | `"--ip=0.0.0.0"` |  |
-| image.command[3] | string | `"--config=/etc/jupyter/openshift/jupyter_notebook_config.py"` |  |
+| image.command[3] | string | `"--config=/etc/jupyter/jupyter_notebook_config.py"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
 | image.tag | string | `"latest"` |  |

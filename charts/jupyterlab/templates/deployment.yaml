@@ -80,10 +80,12 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - name: configs
-              mountPath: "/etc/jupyter/openshift"
             - name: dshm
               mountPath: /dev/shm
+            {{- if .Values.image.addJupyterConfig }}
+            - name: configs
+              mountPath: "/etc/jupyter"
+            {{- end }}
             {{- if .Values.storage.enabled }}
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
@@ -93,12 +95,14 @@ spec:
               mountPath: {{ toString .mountPath }}
             {{- end }}
       volumes:
-        - name: configs
-          configMap:
-            name: {{ include "jupyterlab.fullname" . }}
         - name: dshm
           emptyDir:
             medium: Memory
+        {{- if .Values.image.addJupyterConfig }}
+        - name: configs
+          configMap:
+            name: {{ include "jupyterlab.fullname" . }}
+        {{- end }}
         {{- if .Values.storage.enabled }}
         - name: data
           persistentVolumeClaim:

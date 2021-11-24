@@ -4,10 +4,10 @@ description: |
   A generic reuseable Helm chart for deploying almost any dockerized application exposing a web interface to a HTTPS route on OpenShift and Kubernetes
 
 type: application
-home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+home: https://artifacthub.io/packages/helm/dsri-helm-charts/webapp
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Logo_Semantic_Web.svg/1024px-Logo_Semantic_Web.svg.png
 
-version: 0.1.11
+version: 0.1.12
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to

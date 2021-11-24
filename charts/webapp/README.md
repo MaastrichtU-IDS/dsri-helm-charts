@@ -4,6 +4,8 @@
 
 A generic reuseable Helm chart for deploying almost any dockerized application exposing a web interface to a HTTPS route on OpenShift and Kubernetes
 
+The aim of this Helm chart is to give an easy and straightforward way to deploy any Docker image exposing a web interface on OpenShift and Kubernetes clusters. The chart is currently mostly optimized and used in OpenShift/OKD clusters, let us know if you are using it with other Kubernetes distributions in the GitHub repository issues, we would love to hear about it!
+
 ## Installing the Chart
 
 To install the DSRI Helm Charts, if not already done:
@@ -15,13 +17,18 @@ helm repo update
 
 ## Deploying the Chart
 
-To deploy the chart with the release name `webapp`:
+To deploy the chart with the release name `webapp`, here is an example to deploy VisualStudio Code server:
 
 ```bash
 helm install webapp dsri/webapp \
   --set serviceAccount.name=anyuid \
   --set service.openshiftRoute.enabled=true \
-  --set service.port=80
+  --set service.port=8080 \
+  --set storage.mountPath=/home/coder/project \
+  --set image.repository=ghcr.io/maastrichtu-ids/code-server \
+  --set image.tag=latest \
+  --set extraEnvs[0].name=PASSWORD \
+  --set extraEnvs[0].value=changeme
 ```
 
 The command deploys webapp on the OpenShift or Kubernetes cluster in the default configuration.
