@@ -9,7 +9,7 @@ type: application
 home: https://artifacthub.io/packages/helm/dsri-helm-charts/rstudio
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png
 
-version: 0.1.19
+version: 0.1.20
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to

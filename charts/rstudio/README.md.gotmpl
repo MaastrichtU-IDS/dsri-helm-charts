@@ -6,9 +6,9 @@
 
 {{ template "chart.description" . }}
 
-The aim of this Helm chart is to give an easy and straightforward way to deploy RStudio on OpenShift and Kubernetes clusters. The chart is currently mostly optimized and used in OpenShift/OKD clusters, let us know if you are using it with other Kubernetes distributions in the GitHub repository issues, we would love to hear about it!
+> The aim of this Helm chart is to give an easy and straightforward way to deploy RStudio on OpenShift and Kubernetes clusters. Currently the chart is mostly optimized and used in OpenShift/OKD clusters, if you are using it with other Kubernetes distributions please let us know  in the [GitHub repository issues](https://github.com/MaastrichtU-IDS/dsri-helm-charts/issues), we would love to hear about it!
 
-With this Helm chart you can easily deploy any Docker image based on the popular [RStudio rocker images](https://hub.docker.com/r/rocker/rstudio) as root user, such as:
+With this Helm chart you can deploy any Docker image based on the popular [RStudio rocker images](https://hub.docker.com/r/rocker/rstudio) as root user, such as:
 - ghcr.io/maastrichtu-ids/rstudio:latest
 - bioconductor/bioconductor_docker
 - rocker/rstudio
@@ -55,7 +55,7 @@ helm upgrade {{ template "chart.name" . }} dsri/{{ template "chart.name" . }}
 
 To uninstall/delete the `{{ template "chart.name" . }}` deployment:
 
-```
+```bash
 helm delete {{ template "chart.name" . }}
 ```
 

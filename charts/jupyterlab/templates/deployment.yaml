@@ -32,6 +32,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           workingDir: {{ .Values.storage.mountPath }}
+          # {{- if gt (len .Values.image.addJupyterConfig) 0 - }}
           {{- if .Values.image.addJupyterConfig }}
           command: 
             - "jupyter"

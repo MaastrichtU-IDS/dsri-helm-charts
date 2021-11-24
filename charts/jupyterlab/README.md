@@ -2,11 +2,11 @@
 
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)  ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
-A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks with root user on OpenShift and Kubernetes
+A Helm chart to deploy JupyterLab on CPU and GPU in OpenShift and Kubernetes clusters. Works well with images based on the jupyter/docker-stacks, and images using the root user
 
-The aim of this Helm chart is to give an easy and straightforward way to deploy JupyterLab on OpenShift and Kubernetes clusters. The chart is currently mostly optimized and used in OpenShift/OKD clusters, let us know if you are using it with other Kubernetes distributions in the GitHub repository issues, we would love to hear about it!
+> The aim of this Helm chart is to give an easy and straightforward way to deploy JupyterLab on OpenShift and Kubernetes clusters. Currently the chart is mostly optimized and used in OpenShift/OKD clusters, if you are using it with other Kubernetes distributions please let us know  in the [GitHub repository issues](https://github.com/MaastrichtU-IDS/dsri-helm-charts/issues), we would love to hear about it!
 
-With this Helm chart you can easily deploy any JupyterLab Docker image as root user, including those based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), such as:
+With this Helm chart you can deploy any JupyterLab Docker image as root user, including those based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), such as:
 - [ghcr.io/maastrichtu-ids/jupyterlab](https://github.com/MaastrichtU-IDS/jupyterlab) (our custom image for Data Science with VisualStudio Code, OpenRefine, conda integration, Python autocomplete, and additional Java and SPARQL kernels)
 - [jupyter/minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/base-notebook)
 - jupyter/scipy-notebook
@@ -36,8 +36,8 @@ helm install jupyterlab dsri/jupyterlab \
   --set serviceAccount.name=anyuid \
   --set service.openshiftRoute.enabled=true \
   --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
-  --set image.tag=tensorflow \
-  --set storage.mountPath=/workspace \
+  --set image.tag=latest \
+  --set storage.mountPath=/home/jovyan/work \
   --set password=changeme
 ```
 
@@ -53,6 +53,20 @@ helm install jupyterlab-gpu dsri/jupyterlab \
   --set resources.requests."nvidia\.com/gpu"=1 \
   --set resources.limits."nvidia\.com/gpu"=1 \
   --set password=changeme
+```
+
+## Checking the logs
+
+Get the events related to your chart deployment (replace oc by `kubectl` for Kubernetes):
+
+```bash
+oc get events | grep jupyterlab
+```
+
+Get logs of the chart deployment:
+
+```bash
+oc logs deployment/jupyterlab --tail 100
 ```
 
 ## Updating the image in a deployed chart
