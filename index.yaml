@@ -656,6 +656,30 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-11-24T12:12:14.239236924Z"
+    description: A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks
+      on OpenShift and Kubernetes
+    digest: acec7fd1ea83c3000f22b08ea4506ca470105fd9d05f4a8259934ab322f576c3
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/207px-Jupyter_logo.svg.png
+    keywords:
+    - jupyterlab
+    - jupyter
+    - notebook
+    - workspace
+    - python
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: jupyterlab
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/jupyterlab-0.1.23/jupyterlab-0.1.23.tgz
+    version: 0.1.23
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-11-24T11:32:00.463090046Z"
     description: A Helm chart to deploy JupyterLab based on the jupyter/docker-stacks
       on OpenShift and Kubernetes
@@ -1103,6 +1127,33 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 3.2.0
+    created: "2021-11-24T12:12:14.375817698Z"
+    description: 'A Helm chart to deploy RStudio on Kubernetes and OpenShift. Most
+      images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
+      | rocker/rstudio | rocker/tidyverse | ghcr.io/maastrichtu-ids/rstudio '
+    digest: a112794d454b776e6d962241e41ff8312d160fc09c0b29c97da3589ebf6e1ff3
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png
+    keywords:
+    - vscode
+    - code
+    - workspace
+    - python
+    - java
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: rstudio
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/rstudio-0.1.17/rstudio-0.1.17.tgz
+    version: 0.1.17
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 3.2.0
     created: "2021-11-24T11:32:00.620999165Z"
     description: 'A Helm chart to deploy RStudio on Kubernetes and OpenShift. Most
       images based on rocker can be used, such as: bioconductor/bioconductor_docker:devel
@@ -1421,6 +1472,31 @@ entries:
       artifacthub.io/operator: "false"
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-11-24T12:12:14.51066556Z"
+    description: 'A generic reuseable Helm chart for deploying almost any dockerized
+      application exposing a web interface to a HTTPS route on OpenShift and Kubernetes '
+    digest: 637c21326fcb3471853c02bcc926352fdb09921ca7ef8fcbcfe438b20d974206
+    home: https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Logo_Semantic_Web.svg/1024px-Logo_Semantic_Web.svg.png
+    keywords:
+    - webapp
+    - web application
+    - generic
+    - docker
+    maintainers:
+    - email: vincent.emonet@gmail.com
+      name: Vincent Emonet
+    name: webapp
+    sources:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts
+    type: application
+    urls:
+    - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.11/webapp-0.1.11.tgz
+    version: 0.1.11
+  - annotations:
+      artifacthub.io/operator: "false"
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-11-24T11:32:00.794964869Z"
     description: 'A generic reuseable Helm chart for deploying almost any dockerized
       application exposing a web interface to a HTTPS route on OpenShift and Kubernetes '
@@ -1692,4 +1768,4 @@ entries:
     urls:
     - https://github.com/MaastrichtU-IDS/dsri-helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-24T11:32:00.795778479Z"
+generated: "2021-11-24T12:12:14.511079263Z"
