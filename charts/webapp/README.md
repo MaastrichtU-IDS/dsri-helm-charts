@@ -30,7 +30,7 @@ The command deploys webapp on the OpenShift or Kubernetes cluster in the default
 
 To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart.
 
-Then you can update the image in the running JupyterLab:
+You can then update the image used by the running webapp:
 
 ```bash
 helm upgrade webapp dsri/webapp
@@ -65,23 +65,23 @@ The following table lists the configurable parameters of the webapp chart and th
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
+| service.ingress.annotations | object | `{}` |  |
+| service.ingress.enabled | bool | `false` |  |
+| service.ingress.hosts[0].host | string | `"chart-example.local"` |  |
+| service.ingress.hosts[0].paths | list | `[]` |  |
+| service.ingress.tls | list | `[]` |  |
+| service.openshiftRoute.enabled | bool | `true` |  |
+| service.openshiftRoute.host | string | `""` |  |
+| service.openshiftRoute.path | string | `""` |  |
+| service.openshiftRoute.tls.enabled | bool | `true` |  |
+| service.openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
+| service.openshiftRoute.tls.termination | string | `"edge"` |  |
+| service.openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
-| serviceAccount.ingress.annotations | object | `{}` |  |
-| serviceAccount.ingress.enabled | bool | `false` |  |
-| serviceAccount.ingress.hosts[0].host | string | `"chart-example.local"` |  |
-| serviceAccount.ingress.hosts[0].paths | list | `[]` |  |
-| serviceAccount.ingress.tls | list | `[]` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
-| serviceAccount.openshiftRoute.enabled | bool | `true` |  |
-| serviceAccount.openshiftRoute.host | string | `""` |  |
-| serviceAccount.openshiftRoute.path | string | `""` |  |
-| serviceAccount.openshiftRoute.tls.enabled | bool | `true` |  |
-| serviceAccount.openshiftRoute.tls.insecureEdgeTerminationPolicy | string | `"Redirect"` |  |
-| serviceAccount.openshiftRoute.tls.termination | string | `"edge"` |  |
-| serviceAccount.openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/coder/project"` |  |
 | storage.size | string | `"5Gi"` |  |

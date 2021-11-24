@@ -28,9 +28,8 @@ serviceAccount:
   annotations: {}
 
 service:
-  type: ClusterIP
   port: 8787
-
+  type: ClusterIP
   openshiftRoute:
     enabled: true
     host: ""
@@ -40,7 +39,6 @@ service:
       enabled: true
       termination: edge
       insecureEdgeTerminationPolicy: Redirect
-
   ingress:
     enabled: false
     annotations: {}

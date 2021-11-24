@@ -54,7 +54,6 @@ securityContext:
 service:
   port: 8888
   type: ClusterIP
-
   openshiftRoute:
     enabled: true
     host: ""
@@ -64,7 +63,6 @@ service:
       enabled: true
       termination: edge
       insecureEdgeTerminationPolicy: Redirect
-
   ingress:
     enabled: false
     annotations: {}

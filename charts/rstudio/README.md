@@ -40,7 +40,7 @@ The command deploys rstudio on the OpenShift or Kubernetes cluster in the defaul
 
 To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart.
 
-Then you can update the image in the running JupyterLab:
+You can then update the image used by the running RStudio:
 
 ```bash
 helm upgrade rstudio dsri/rstudio

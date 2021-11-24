@@ -42,7 +42,7 @@ The command deploys jupyterlab on the OpenShift or Kubernetes cluster in the def
 
 To be able to trigger an update of the image deployed by the chart you will need to set `image.pullPolicy=Always` when deploying the chart.
 
-Then you can update the image in the running JupyterLab:
+You can then update the image used by the running JupyterLab:
 
 ```bash
 helm upgrade jupyterlab dsri/jupyterlab
