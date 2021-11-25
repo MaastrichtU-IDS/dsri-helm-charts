@@ -36,7 +36,6 @@ spec:
           {{- else }}
           workingDir: {{ .Values.storage.mountPath }}
           {{- end }}
-          # {{- if gt (len .Values.image.addJupyterConfig) 0 - }}
           {{- if .Values.image.addJupyterConfig }}
           command: 
             - "jupyter"
