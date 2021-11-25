@@ -15,11 +15,12 @@ If release name contains chart name it will be used as a full name.
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
 {{- $name := default .Chart.Name .Values.nameOverride }}
-{{- if contains $name .Release.Name }}
+## If the release name provided does not contains the chart name this if was adding it to the route name:
+# {{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
+# {{- else }}
+# {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+# {{- end }}
 {{- end }}
 {{- end }}
 

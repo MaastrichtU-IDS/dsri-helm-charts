@@ -6,25 +6,27 @@ Helm charts to easily deploy Data Science workspaces and services on Kubernetes 
 
 Checkout the `charts` folder to browse the charts available: 
 
-* [VisualStudio Code server](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/code-server)
 * [JupyterLab](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/jupyterlab)
 * [RStudio](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/rstudio)
+* [Generic web app](https://github.com/MaastrichtU-IDS/dsri-helm-charts/tree/main/charts/webapp)
 
 ## Install
 
-Add the Helm repository:
+To deploy charts from the terminal you will need to have `helm` installed on your machine, you can [follow this documentation](https://maastrichtu-ids.github.io/dsri-documentation/docs/helm#install-helm) to install it.
+
+Add the DSRI Helm Charts repository:
 
 ```bash
 helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
 helm repo update
 ```
 
-## Start applications
+## Quickstart an application
 
-Start VisualStudio Code server:
+Quickstart JupyterLab on OpenShift with default settings and using existing `anyuid` service account to run as root:
 
 ```bash
-helm install code-server dsri/code-server \
+helm install jupyterlab dsri/jupyterlab \
   --set serviceAccount.name=anyuid,openshiftRoute.enabled=true \
   --set password=changeme
 ```
@@ -32,40 +34,42 @@ helm install code-server dsri/code-server \
 Delete:
 
 ```bash
-helm uninstall code-server
+helm uninstall jupyterlab
 ```
+
+Refer to the `README.md` for each application in the `charts` folder for more details.
 
 ## Develop
 
 Lint to check for errors: 
 
 ```bash
-helm lint charts/code-server
-yamllint charts/code-server/templates/deployment.yaml
+helm lint charts/jupyterlab
+yamllint charts/jupyterlab/templates/deployment.yaml
 ```
 
 Test a chart without deploying:
 
 ```bash
-helm install --dry-run --debug ./charts/code-server --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme --generate-name
+helm install --dry-run --debug ./charts/jupyterlab --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme --generate-name
 ```
 
 Deploy from local source code:
 
 ```bash
-helm install code-server ./charts/code-server --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme
+helm install code-server ./charts/jupyterlab --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme
 ```
 
 Delete:
 
 ```bash
-helm uninstall code-server
+helm uninstall jupyterlab
 ```
 
 Create a new chart:
 
 ```bash
-helm create charts/code-server
+helm create charts/your-new-chart
 ```
 
 ### Generate docs
@@ -76,7 +80,7 @@ Install [helm-docs](https://github.com/norwoodj/helm-docs) (requires `golang` in
 GO111MODULE=on go get github.com/norwoodj/helm-docs/cmd/helm-docs
 ```
 
-Generate a `README.md` for all charts:
+Generate a `README.md` for all charts by running `helm-docs` from the root of the git repository:
 
 ```bash
 ~/go/bin/helm-docs

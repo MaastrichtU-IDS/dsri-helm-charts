@@ -75,7 +75,7 @@ echo https://$(oc get route --selector app.kubernetes.io/instance=jupyterlab --n
 
 ## Checking the logs
 
-Get the events related to your chart deployment (replace oc by `kubectl` for Kubernetes):
+Get the events related to your chart deployment (replace `oc` by `kubectl` for Kubernetes):
 
 ```bash
 oc get events | grep jupyterlab
