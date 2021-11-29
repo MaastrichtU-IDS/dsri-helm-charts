@@ -6,15 +6,18 @@ A Helm chart to deploy JupyterLab on CPU and GPU in OpenShift and Kubernetes clu
 
 > The aim of this Helm chart is to give an easy and straightforward way to deploy JupyterLab on OpenShift and Kubernetes clusters. Currently the chart is mostly optimized and used in OpenShift/OKD clusters, if you are using it with other Kubernetes distributions please let us know  in the [GitHub repository issues](https://github.com/MaastrichtU-IDS/dsri-helm-charts/issues), we would love to hear about it!
 
-With this Helm chart you can deploy any JupyterLab Docker image as root user, including those based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), such as:
-- [ghcr.io/maastrichtu-ids/jupyterlab](https://github.com/MaastrichtU-IDS/jupyterlab) (our custom image for Data Science with VisualStudio Code, OpenRefine, conda integration, Python autocomplete, and additional Java and SPARQL kernels)
-- [jupyter/minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/base-notebook)
-- jupyter/scipy-notebook
-- jupyter/datascience-notebook (with Julia kernel)
-- jupyter/tensorflow-notebook
-- jupyter/r-notebook
-- jupyter/pyspark-notebook
-- jupyter/all-spark-notebook
+With this Helm chart you can deploy any JupyterLab Docker image with root privileges (or not), including those based on the [official Jupyter docker stack](https://github.com/jupyter/docker-stacks), such as:
+- [`ghcr.io/maastrichtu-ids/jupyterlab`](https://github.com/MaastrichtU-IDS/jupyterlab) (our custom image for Data Science with VisualStudio Code, OpenRefine, conda integration, Python autocomplete, and additional Java and SPARQL kernels)
+- [`jupyter/minimal-notebook`](https://github.com/jupyter/docker-stacks/tree/master/base-notebook)
+- `jupyter/scipy-notebook`
+- `jupyter/datascience-notebook` (with Julia kernel)
+- `jupyter/tensorflow-notebook`
+- `jupyter/r-notebook`
+- `jupyter/pyspark-notebook`
+- `jupyter/all-spark-notebook`
+- [`nvcr.io/nvidia/tensorflow`](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow)
+- [`nvcr.io/nvidia/pytorch`](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch)
+- [`nvcr.io/nvidia/cuda`](https://ngc.nvidia.com/catalog/containers/nvidia:cuda)
 
 You can also extend those images to build a custom one with all the packages you need already installed, we recommend you to take a look at the instructions of our custom JupyterLab image at https://github.com/MaastrichtU-IDS/jupyterlab
 
@@ -53,7 +56,7 @@ If you are not using a `ghcr.io/maastrichtu-ids/jupyterlab` image, you will need
   --set image.addJupyterConfig=true
 ```
 
-You can also use this chart to deploy JupyterLab **on GPU** with the release name `jupyterlab-gpu` using the existing `anyuid` service account:
+You can also use this chart to deploy JupyterLab **on GPU**, here is an example with the release name `jupyterlab-gpu`, using the existing `anyuid` service account, and our custom [`ghcr.io/maastrichtu-ids/jupyterlab:tensorflow`](https://github.com/MaastrichtU-IDS/jupyterlab#jupyterlab-on-gpu-%EF%B8%8F) image based on [`nvcr.io/nvidia/tensorflow`](https://ngc.nvidia.com/catalog/containers/nvidia:tensorflow):
 
 ```bash
 helm install jupyterlab-gpu dsri/jupyterlab \
@@ -61,16 +64,26 @@ helm install jupyterlab-gpu dsri/jupyterlab \
   --set service.openshiftRoute.enabled=true \
   --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
   --set image.tag=tensorflow \
-  --set storage.mountPath=/workspace \
+  --set image.pullPolicy=Always \
+  --set storage.mountPath=/workspace/persistent \
+  --set storage.workingDir=/workspace \
   --set resources.requests."nvidia\.com/gpu"=1 \
   --set resources.limits."nvidia\.com/gpu"=1 \
   --set password=changeme
 ```
 
+You can add an additional existing volume easily:
+
+```bash
+  --set storage.extraStorage[0].name=scratch-storage \
+  --set storage.extraStorage[0].mountPath=/workspace/scratch \
+  --set storage.extraStorage[0].readOnly=false \
+```
+
 If you deployed your application with an OpenShift Route, you can retrieve the URL of the deloyed application with this command, after changing `jupyterlab` by your application name:
 
 ```bash
-echo https://$(oc get route --selector app.kubernetes.io/instance=jupyterlab --no-headers -o=custom-columns=HOST:.spec.host)
+oc get route --selector app.kubernetes.io/instance=jupyterlab --no-headers -o=custom-columns=HOST:.spec.host
 ```
 
 ## Checking the logs

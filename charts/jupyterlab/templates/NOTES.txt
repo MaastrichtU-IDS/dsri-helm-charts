@@ -1,6 +1,6 @@
 Get the deployed application URL by running these commands:
 {{- if .Values.service.openshiftRoute.enabled }}
-echo https://$(oc get route --selector app.kubernetes.io/instance={{ .Release.Name }} --no-headers -o=custom-columns=HOST:.spec.host)
+oc get route --selector app.kubernetes.io/instance={{ .Release.Name }} --no-headers -o=custom-columns=HOST:.spec.host
 {{- else if .Values.service.ingress.enabled }}
 {{- range $host := .Values.service.ingress.hosts }}
   {{- range .paths }}
