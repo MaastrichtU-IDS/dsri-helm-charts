@@ -63,7 +63,6 @@ spec:
             - name: GRANT_SUDO
               value: "yes"
             {{- end }}
-            {{- if .Values.image.command }}
             - name: GIT_URL
               value: {{ .Values.gitUrl }}
             - name: GIT_NAME
