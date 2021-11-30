@@ -66,7 +66,6 @@ If you are not using a `ghcr.io/maastrichtu-ids/jupyterlab` image, you will need
 helm install jupyterlab dsri/jupyterlab \
   --set serviceAccount.name=default \
   --set serviceAccount.sudoEnabled=false \
-  --set securityContext={} \
   --set "podSecurityContext.supplementalGroups[0]=100" \
   --set service.openshiftRoute.enabled=true \
   --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
@@ -164,7 +163,7 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | resources | object | `{}` |  |
-| securityContext.runAsUser | int | `0` |  |
+| securityContext | object | `{}` |  |
 | service.ingress.annotations | object | `{}` |  |
 | service.ingress.enabled | bool | `false` |  |
 | service.ingress.hosts[0].host | string | `"chart-example.local"` |  |

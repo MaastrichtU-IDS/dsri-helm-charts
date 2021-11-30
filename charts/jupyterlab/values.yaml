@@ -43,18 +43,6 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
 
-securityContext:
-  # Run as root by default 
-  runAsUser: 0
-  # supplementalGroups:
-  # - 100
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
 service:
   port: 8888
   type: ClusterIP
@@ -96,6 +84,18 @@ resources: {}
   #   nvidia.com/gpu: '1'
   # limits:
   #   nvidia.com/gpu: '1'
+
+securityContext: {}
+  # Run as root by default 
+  # runAsUser: 0
+  # supplementalGroups:
+  # - 100
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 podSecurityContext: {}
   # runAsUser: 0

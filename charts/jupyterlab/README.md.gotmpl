@@ -68,7 +68,6 @@ If you are not using a `ghcr.io/maastrichtu-ids/jupyterlab` image, you will need
 helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
   --set serviceAccount.name=default \
   --set serviceAccount.sudoEnabled=false \
-  --set securityContext={} \
   --set "podSecurityContext.supplementalGroups[0]=100" \
   --set service.openshiftRoute.enabled=true \
   --set image.repository=ghcr.io/maastrichtu-ids/jupyterlab \
