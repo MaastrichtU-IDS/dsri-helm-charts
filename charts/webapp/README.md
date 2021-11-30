@@ -15,6 +15,8 @@ helm repo add dsri https://maastrichtu-ids.github.io/dsri-helm-charts/
 helm repo update
 ```
 
+> Visit the [dsri-helm-charts GitHub repository](https://github.com/MaastrichtU-IDS/dsri-helm-charts) for more details on how to develop and tests the charts, feel free to send us pull requests to propose your improvements!
+
 ## Deploying the Chart
 
 To deploy the chart with the release name `webapp`, here is an example to deploy VisualStudio Code server:

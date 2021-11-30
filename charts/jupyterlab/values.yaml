@@ -36,13 +36,15 @@ storage:
   #     readOnly: true
 
 serviceAccount:
+  sudoEnabled: true
   # Specifies whether a service account should be created
   create: false
   name: "anyuid"
   # Annotations to add to the service account
   annotations: {}
 
-securityContext: 
+securityContext:
+  # Run as root by default 
   runAsUser: 0
   # supplementalGroups:
   # - 100
@@ -96,7 +98,9 @@ resources: {}
   #   nvidia.com/gpu: '1'
 
 podSecurityContext: {}
-  # fsGroup: 2000
+  # runAsUser: 0
+  # supplementalGroups:
+  # - 100
 imagePullSecrets: []
 podAnnotations: {}
 nodeSelector: {}

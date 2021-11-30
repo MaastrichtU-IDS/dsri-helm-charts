@@ -7,7 +7,7 @@ type: application
 home: https://artifacthub.io/packages/helm/dsri-helm-charts/webapp
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Logo_Semantic_Web.svg/1024px-Logo_Semantic_Web.svg.png
 
-version: 0.1.15
+version: 0.1.16
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to

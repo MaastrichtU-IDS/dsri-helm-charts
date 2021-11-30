@@ -16,6 +16,8 @@ With this Helm chart you can deploy any Docker image based on the popular [RStud
 
 You can also extend those images to build a custom one with all the packages you need already installed, we recommend you to take a look at the instructions of our custom RStudio image at https://github.com/MaastrichtU-IDS/rstudio
 
+> Visit the [dsri-helm-charts GitHub repository](https://github.com/MaastrichtU-IDS/dsri-helm-charts) for more details on how to develop and tests the charts, feel free to send us pull requests to propose your improvements!
+
 ## Installing the Chart
 
 Install the DSRI Helm Charts on your machine, if not already done:
