@@ -85,8 +85,8 @@ resources: {}
   # limits:
   #   nvidia.com/gpu: '1'
 
+## Overwritten if serviceAccount.sudoEnabled: true
 securityContext: {}
-  # Run as root by default 
   # runAsUser: 0
   # supplementalGroups:
   # - 100
