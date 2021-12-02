@@ -60,7 +60,7 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
             {{- if .Values.service.shinyPort }}
-            - name: http
+            - name: http-{{ .Values.service.shinyPort }}
               containerPort: {{ .Values.service.shinyPort }}
               protocol: TCP
             {{- end}}

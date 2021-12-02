@@ -63,7 +63,8 @@
                 },
                 "shinyPort": {
                     "type": "integer",
-                    "title": "Port of the shiny-server, if deployed"
+                    "title": "Port of the shiny-server",
+                    "description": "Leave empty to not create a service and route for Shiny server"
                 },
                 "type": {
                     "type": "string",
