@@ -69,7 +69,7 @@ The following table lists the configurable parameters of the rstudio chart and t
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | extraEnvs | list | `[]` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/rstudio"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
@@ -93,6 +93,7 @@ The following table lists the configurable parameters of the rstudio chart and t
 | service.openshiftRoute.tls.termination | string | `"edge"` |  |
 | service.openshiftRoute.wildcardPolicy | string | `"None"` |  |
 | service.port | int | `8787` |  |
+| service.shinyPort | int | `3838` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |

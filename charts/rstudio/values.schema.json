@@ -159,7 +159,7 @@
         "extraEnvs": {
             "type": "array",
             "title": "Environment variables",
-            "description": "Configure the environment variables to pass to the container.",
+            "description": "Add environment variables to pass to the container.",
             "additionalItems": true,
             "items": {
                 "type": "object",
@@ -178,7 +178,7 @@
         "resources": {
             "type": "object",
             "title": "Resources limits",
-            "description": "Set limits for Memory, CPU, or GPU",
+            "description": "Set limits for Memory or CPU",
             "additionalProperties": true,
             "properties": {
                 "limits": {

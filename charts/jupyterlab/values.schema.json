@@ -206,7 +206,7 @@
         "extraEnvs": {
             "type": "array",
             "title": "Environment variables",
-            "description": "Configure the environment variables to pass to the container.",
+            "description": "Add environment variables to pass to the container.",
             "additionalItems": true,
             "items": {
                 "type": "object",

@@ -1,0 +1,17 @@
+{{- if .Values.service.shinyPort }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "rstudio.fullname" . }}-shiny
+  labels:
+    {{- include "rstudio.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.shinyPort }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "rstudio.selectorLabels" . | nindent 4 }}
+{{- end}}

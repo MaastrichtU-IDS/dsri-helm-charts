@@ -12,7 +12,8 @@ openblasNumThreads: 1
 image:
   repository: ghcr.io/maastrichtu-ids/rstudio
   tag: "latest"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
+  # or IfNotPresent
 
 storage:
   enabled: true
@@ -29,6 +30,8 @@ serviceAccount:
 
 service:
   port: 8787
+  # Leave shinyPort empty to not deploy the complementary shiny server
+  shinyPort: 3838
   type: ClusterIP
   openshiftRoute:
     enabled: true

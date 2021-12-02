@@ -62,6 +62,8 @@ If you are not using a `ghcr.io/maastrichtu-ids/jupyterlab` image, you will need
 
 ### On CPU with restricted user
 
+To deploy the chart **on CPU** with the release name `jupyterlab` using the existing `default` service account without root privileges:
+
 ```bash
 helm install jupyterlab dsri/jupyterlab \
   --set serviceAccount.name=default \
@@ -152,9 +154,9 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | gitEmail | string | `"default@maastrichtuniversity.nl"` |  |
 | gitName | string | `"Default user"` |  |
 | gitUrl | string | `""` |  |
-| image.addJupyterConfig | bool | `false` |  |
+| image.addJupyterConfig | bool | `false` |  Mount a jupyter_notebook_config.py to automatically clone $GIT_URL and install requirements on startup, this overrides command |
 | image.command | list | `[]` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |  supplementalGroups: - 100 |

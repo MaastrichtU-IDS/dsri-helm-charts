@@ -64,6 +64,8 @@ If you are not using a `ghcr.io/maastrichtu-ids/jupyterlab` image, you will need
 
 ### On CPU with restricted user
 
+To deploy the chart **on CPU** with the release name `{{ template "chart.name" . }}` using the existing `default` service account without root privileges:
+
 ```bash
 helm install {{ template "chart.name" . }} dsri/{{ template "chart.name" . }} \
   --set serviceAccount.name=default \

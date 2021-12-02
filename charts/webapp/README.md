@@ -62,7 +62,7 @@ The following table lists the configurable parameters of the webapp chart and th
 | affinity | object | `{}` |  |
 | autoscaling.enabled | bool | `false` |  |
 | extraEnvs | list | `[]` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/code-server"` |  |
 | image.tag | string | `"latest"` |  |
 | imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
