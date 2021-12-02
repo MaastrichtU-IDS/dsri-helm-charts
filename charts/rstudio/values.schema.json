@@ -61,6 +61,10 @@
                     "type": "integer",
                     "title": "Port of the application"
                 },
+                "shinyPort": {
+                    "type": "integer",
+                    "title": "Port of the shiny-server, if deployed"
+                },
                 "type": {
                     "type": "string",
                     "title": "Service type"
