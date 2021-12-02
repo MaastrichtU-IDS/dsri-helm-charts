@@ -9,9 +9,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.shinyPort }}
-      targetPort: http
+      targetPort: http-{{ .Values.service.shinyPort }}
       protocol: TCP
-      name: http
+      name: http-{{ .Values.service.shinyPort }}
   selector:
     {{- include "rstudio.selectorLabels" . | nindent 4 }}
 {{- end}}

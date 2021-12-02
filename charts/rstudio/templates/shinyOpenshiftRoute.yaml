@@ -22,7 +22,7 @@ spec:
   path: {{ .Values.service.openshiftRoute.path }}
   wildcardPolicy: {{ .Values.service.openshiftRoute.wildcardPolicy }}
   port:
-    targetPort: http
+    targetPort: http-{{ .Values.service.shinyPort }}
 {{- if .Values.service.openshiftRoute.tls.enabled }}
   tls:
 {{- with .Values.service.openshiftRoute.tls }}
