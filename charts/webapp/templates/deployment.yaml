@@ -68,17 +68,21 @@ spec:
           volumeMounts:
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
-            # - name: dshm
-            #   mountPath: /dev/shm
+            {{- if .Values.storage.enableDshm }}
+            - name: dshm
+              mountPath: /dev/shm
+            {{- end }}
           {{- end }}
       {{- if .Values.storage.enabled }}
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "webapp.fullname" . }}
-        # - name: dshm
-        #   emptyDir:
-        #     medium: Memory
+        {{- if .Values.storage.enableDshm }}
+        - name: dshm
+          emptyDir:
+            medium: Memory
+        {{- end }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

@@ -103,8 +103,10 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
+            {{- if .Values.storage.enableDshm }}
             - name: dshm
               mountPath: /dev/shm
+            {{- end }}
             {{- if .Values.image.addJupyterConfig }}
             - name: configs
               mountPath: "/etc/jupyter"
@@ -118,9 +120,11 @@ spec:
               mountPath: {{ toString .mountPath }}
             {{- end }}
       volumes:
+        {{- if .Values.storage.enableDshm }}
         - name: dshm
           emptyDir:
             medium: Memory
+        {{- end }}
         {{- if .Values.image.addJupyterConfig }}
         - name: configs
           configMap:

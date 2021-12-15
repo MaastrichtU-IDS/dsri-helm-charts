@@ -30,6 +30,8 @@ storage:
   mountPath: /home/jovyan/work
   # Let workspace empty to use the mountPath as workspace
   workingDir: ""
+  # Mount the distributed shared memory
+  enableDshm: false
   extraStorage: []
   # extraStorage: 
   #   - name: easybuild-data
@@ -86,6 +88,14 @@ resources: {}
   # limits:
   #   nvidia.com/gpu: '1'
 
+tolerations: []
+## For GPU use:
+# tolerations: 
+#   - effect: NoSchedule
+#     key: "nvidia.com/gpu"
+#     operator: Exists
+
+
 ## Overwritten if serviceAccount.sudoEnabled: true
 securityContext: {}
   # runAsUser: 0
@@ -105,5 +115,4 @@ podSecurityContext: {}
 imagePullSecrets: []
 podAnnotations: {}
 nodeSelector: {}
-tolerations: []
 affinity: {}

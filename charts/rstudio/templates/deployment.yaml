@@ -40,8 +40,10 @@ spec:
                   name: {{ include "rstudio.fullname" . }}
             - name: USER
               value: {{ .Values.username }}
+            {{- if .Values.serviceAccount.sudoEnabled }}
             - name: ROOT
               value: "TRUE"
+            {{- end }}
             - name: OPENBLAS_NUM_THREADS
               value: "{{ toString .Values.openblasNumThreads }}"
             # To enable updating the image: https://github.com/kubernetes/kubernetes/issues/33664
@@ -83,16 +85,20 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
+            {{- if .Values.storage.enableDshm }}
             - name: dshm
               mountPath: /dev/shm
+            {{- end }}
             {{- if .Values.storage.enabled }}
             - name: data
               mountPath: {{ .Values.storage.mountPath }}
             {{- end }}
       volumes:
+        {{- if .Values.storage.enableDshm }}
         - name: dshm
           emptyDir:
             medium: Memory
+        {{- end }}
         {{- if .Values.storage.enabled }}
         - name: data
           persistentVolumeClaim:

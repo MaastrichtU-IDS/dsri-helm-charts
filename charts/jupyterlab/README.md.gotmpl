@@ -94,6 +94,9 @@ helm install {{ template "chart.name" . }}-gpu dsri/{{ template "chart.name" . }
   --set storage.workingDir=/workspace \
   --set resources.requests."nvidia\.com/gpu"=1 \
   --set resources.limits."nvidia\.com/gpu"=1 \
+  --set tolerations[0].effect=NoSchedule \
+  --set tolerations[0].key=nvidia.com/gpu \
+  --set tolerations[0].operator=Exists \
   --set password=changeme
 ```
 

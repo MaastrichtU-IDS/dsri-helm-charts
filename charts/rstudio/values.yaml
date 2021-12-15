@@ -18,9 +18,12 @@ image:
 storage:
   enabled: true
   size: 5Gi
+  # Mount the distributed shared memory
+  enableDshm: false
   mountPath: /home/rstudio
 
 serviceAccount:
+  sudoEnabled: true
   # The name of the service account to use.
   name: "anyuid"
   # Specifies whether a service account should be created

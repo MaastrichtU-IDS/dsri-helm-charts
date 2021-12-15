@@ -177,6 +177,11 @@
                     "title": "Folder used as working directory",
                     "description": "Folder used as working directory and workspace by JupyterLab, let empty to use the mountPath"
                 },
+                "enableDshm": {
+                    "type": "boolean",
+                    "title": "Mount the distributed shared memory",
+                    "description": "Can increase performance of some operation. Mount /dev/shm on memory"
+                },
                 "extraStorage": {
                     "type": "array",
                     "title": "Extra storages",

@@ -157,6 +157,11 @@
                     "type": "string",
                     "title": "Mount path of the persistent storage",
                     "description": "mount path of the persistent storage, usually in the home folder"
+                },
+                "enableDshm": {
+                    "type": "boolean",
+                    "title": "Mount the distributed shared memory",
+                    "description": "Can increase performance of some operation. Mount /dev/shm on memory"
                 }
             },
             "additionalProperties": true

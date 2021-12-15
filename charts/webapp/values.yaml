@@ -31,6 +31,8 @@ storage:
   enabled: true
   size: 5Gi
   mountPath: /home/coder/project
+  # Mount the distributed shared memory
+  enableDshm: false
 
 extraEnvs: []
 # extraEnvs: 
