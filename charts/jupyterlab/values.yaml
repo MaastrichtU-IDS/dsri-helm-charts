@@ -31,7 +31,7 @@ storage:
   # Let workspace empty to use the mountPath as workspace
   workingDir: ""
   # Mount the distributed shared memory
-  enableDshm: false
+  enableDshm: true
   extraStorage: []
   # extraStorage: 
   #   - name: easybuild-data

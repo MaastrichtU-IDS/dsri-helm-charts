@@ -18,9 +18,9 @@ image:
 storage:
   enabled: true
   size: 5Gi
-  # Mount the distributed shared memory
-  enableDshm: false
   mountPath: /home/rstudio
+  # Mount the distributed shared memory
+  enableDshm: true
 
 serviceAccount:
   sudoEnabled: true
