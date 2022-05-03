@@ -27,9 +27,9 @@ image:
 storage:
   enabled: true
   size: 5Gi
-  mountPath: /home/jovyan/work
+  mountPath: /home/jovyan/work/persistent
   # Let workspace empty to use the mountPath as workspace
-  workingDir: ""
+  workingDir: /home/jovyan/work
   # Mount the distributed shared memory
   enableDshm: true
   extraStorage: []
