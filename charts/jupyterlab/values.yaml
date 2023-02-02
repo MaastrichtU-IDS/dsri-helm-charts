@@ -28,6 +28,7 @@ storage:
   enabled: true
   size: 5Gi
   mountPath: /home/jovyan/work/persistent
+  storageClass: ""
   # Let workspace empty to use the mountPath as workspace
   workingDir: /home/jovyan/work
   # Mount the distributed shared memory
