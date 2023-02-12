@@ -140,28 +140,67 @@
             "title": "Persistent storage",
             "description": "Configure the persistent volume to store your data.",
             "required": [
-                "size",
-                "mountPath"
+                "rstudio",
+                "shiny"
             ],
             "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "title": "Enabled"
+                "rstudio": {
+                    "type": "object",
+                    "title": "Persistent storage",
+                    "description": "Configure the persistent volume to store your rstudio data.",
+                    "required": [
+                        "enabled",
+                        "size",
+                        "mountPath",
+                        "enableDshm"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "title": "Enabled"
+                        },
+                        "size": {
+                            "type": "string",
+                            "title": "Size of the persistent storage",
+                            "description": "Size of the persistent storage created"
+                        },
+                        "mountPath": {
+                            "type": "string",
+                            "title": "Mount path of the persistent storage",
+                            "description": "mount path of the persistent storage, usually in the home folder"
+                        },
+                        "enableDshm": {
+                            "type": "boolean",
+                            "title": "Mount the distributed shared memory",
+                            "description": "Can increase performance of some operation. Mount /dev/shm on memory"
+                        }
+                    }
                 },
-                "size": {
-                    "type": "string",
-                    "title": "Size of the persistent storage",
-                    "description": "Size of the persistent storage created"
-                },
-                "mountPath": {
-                    "type": "string",
-                    "title": "Mount path of the persistent storage",
-                    "description": "mount path of the persistent storage, usually in the home folder"
-                },
-                "enableDshm": {
-                    "type": "boolean",
-                    "title": "Mount the distributed shared memory",
-                    "description": "Can increase performance of some operation. Mount /dev/shm on memory"
+                "shiny": {
+                    "type": "object",
+                    "title": "Persistent storage",
+                    "description": "Configure the persistent volume to store your shiny data.",
+                    "required": [
+                        "enabled",
+                        "size",
+                        "mountPath"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "title": "Enabled"
+                        },
+                        "size": {
+                            "type": "string",
+                            "title": "Size of the persistent storage",
+                            "description": "Size of the persistent storage created"
+                        },
+                        "mountPath": {
+                            "type": "string",
+                            "title": "Mount path of the persistent storage",
+                            "description": "mount path of the persistent storage, usually in the home folder"
+                        }
+                    }
                 }
             },
             "additionalProperties": true
