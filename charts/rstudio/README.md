@@ -37,7 +37,7 @@ helm install rstudio dsri/rstudio \
   --set service.openshiftRoute.enabled=true \
   --set image.repository=ghcr.io/maastrichtu-ids/rstudio \
   --set image.tag=latest \
-  --set storage.mountPath=/home/rstudio \
+  --set storage.rstudio.mountPath=/home/rstudio \
   --set password=changeme
 ```
 
@@ -98,8 +98,12 @@ The following table lists the configurable parameters of the rstudio chart and t
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
-| storage.enabled | bool | `true` |  |
-| storage.mountPath | string | `"/home/rstudio"` |  |
-| storage.size | string | `"5Gi"` |  |
+| storage.rstudio.enabled | bool | `true` |  |
+| storage.rstudio.mountPath | string | `"/home/rstudio"` |  |
+| storage.rstudio.size | string | `"5Gi"` |  |
+| storage.rstudio.enableDshm | bool | `true` |  |
+| storage.shiny.enabled | bool | `true` |  |
+| storage.shiny.mountPath | string | `"/srv/shiny-server"` |  |
+| storage.shiny.size | string | `"5Gi"` |  |
 | tolerations | list | `[]` |  |
 | username | string | `"rstudio"` |  |
