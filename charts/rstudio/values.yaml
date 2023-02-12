@@ -16,11 +16,16 @@ image:
   # or IfNotPresent
 
 storage:
-  enabled: true
-  size: 5Gi
-  mountPath: /home/rstudio
-  # Mount the distributed shared memory
-  enableDshm: true
+  rstudio:
+    enabled: true
+    size: 5Gi
+    mountPath: /home/rstudio
+    # Mount the distributed shared memory
+    enableDshm: true
+  shiny:
+    enabled: true
+    size: 5Gi
+    mountPath: /srv/shiny-server
 
 serviceAccount:
   sudoEnabled: true

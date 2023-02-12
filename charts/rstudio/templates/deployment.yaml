@@ -89,9 +89,13 @@ spec:
             - name: dshm
               mountPath: /dev/shm
             {{- end }}
-            {{- if .Values.storage.enabled }}
-            - name: data
-              mountPath: {{ .Values.storage.mountPath }}
+            {{- if .Values.storage.rstudio.enabled }}
+            - name: rstudio-data
+              mountPath: {{ .Values.storage.rstudio.mountPath }}
+            {{- end }}
+            {{- if .Values.storage.shiny.enabled }}
+            - name: shiny-data
+              mountPath: {{ .Values.storage.shiny.mountPath }}
             {{- end }}
       volumes:
         {{- if .Values.storage.enableDshm }}
@@ -99,10 +103,15 @@ spec:
           emptyDir:
             medium: Memory
         {{- end }}
-        {{- if .Values.storage.enabled }}
-        - name: data
+        {{- if .Values.storage.rstudio.enabled }}
+        - name: rstudio-data
           persistentVolumeClaim:
             claimName: {{ include "rstudio.fullname" . }}
+        {{- end }}
+        {{- if .Values.storage.shiny.enabled }}
+        - name: shiny-data
+          persistentVolumeClaim:
+            claimName: {{ include "rstudio.fullname" . }}-shiny
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

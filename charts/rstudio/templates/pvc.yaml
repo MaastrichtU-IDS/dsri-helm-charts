@@ -1,4 +1,4 @@
-{{- if .Values.storage.enabled }}
+{{- if .Values.storage.rstudio.enabled }}
 kind: "PersistentVolumeClaim"
 apiVersion: "v1"
 metadata:
@@ -10,5 +10,20 @@ spec:
     - "ReadWriteMany"
   resources:
     requests:
-      storage: {{ .Values.storage.size }}
+      storage: {{ .Values.storage.rstudio.size }}
+{{- end }}
+---
+{{- if .Values.storage.shiny.enabled }}
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: {{ include "rstudio.fullname" . }}-shiny
+  labels:
+    {{- include "rstudio.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - "ReadWriteMany"
+  resources:
+    requests:
+      storage: {{ .Values.storage.shiny.size }}
 {{- end }}
