@@ -65,7 +65,7 @@ The following table lists the configurable parameters of the webapp chart and th
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/code-server"` |  |
 | image.tag | string | `"latest"` |  |
-| imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
+| imagePullSecrets | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
@@ -89,6 +89,7 @@ The following table lists the configurable parameters of the webapp chart and th
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
+| storage.enableDshm | bool | `false` |  |
 | storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/coder/project"` |  |
 | storage.size | string | `"5Gi"` |  |

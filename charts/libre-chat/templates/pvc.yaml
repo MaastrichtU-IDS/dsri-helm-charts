@@ -1,0 +1,14 @@
+{{- if .Values.storage.enabled }}
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: {{ include "libre-chat.fullname" . }}
+  labels:
+    {{- include "libre-chat.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - "ReadWriteMany"
+  resources:
+    requests:
+      storage: {{ .Values.storage.size }}
+{{- end }}

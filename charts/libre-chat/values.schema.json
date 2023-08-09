@@ -1,0 +1,316 @@
+{
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "password": {
+            "type": "string",
+            "title": "Admin API Password (optional)",
+            "description": "Password to access the admin API"
+        },
+        "confUrl": {
+            "type": "string",
+            "title": "Chatbot YAML configuration URL (optional)",
+            "description": "Direct URL to the Chatbot YAML configuration."
+        },
+        "chatConf": {
+            "type": "object",
+            "title": "Chatbot YAML configuration (optional)",
+            "description": "Chatbot YAML configuration.",
+            "additionalProperties": true
+        },
+        "image": {
+            "type": "object",
+            "title": "Docker image",
+            "description": "Configure the Docker image to use.",
+            "required": [
+                "repository",
+                "tag",
+                "pullPolicy"
+            ],
+            "properties": {
+                "repository": {
+                    "type": "string",
+                    "title": "Image repository",
+                    "description": "URL of the Docker image to use"
+                },
+                "tag": {
+                    "type": "string",
+                    "title": "Tag of the image",
+                    "description": "Tag (version) of the image used"
+                },
+                "pullPolicy": {
+                    "type": "string",
+                    "title": "Image pull policy",
+                    "description": "Describe when the image is pulled: Always, IfNotPresent, Never."
+                },
+                "command": {
+                    "type": "array",
+                    "title": "Start command",
+                    "description": "Override the command used when the image starts (aka. entrypoint)",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "addJupyterConfig": {
+                    "type": "boolean",
+                    "title": "Add jupyter_notebook_config.py",
+                    "description": "Mount a jupyter_notebook_config.py to automatically clone $GIT_URL and install requirements on startup, this overrides the start command"
+                }
+            },
+            "additionalProperties": true
+        },
+        "service": {
+            "type": "object",
+            "title": "Service configuration",
+            "description": "Configure on which port the application will be served, and the route.",
+            "required": [
+                "type",
+                "port"
+            ],
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "title": "Port of the application"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "Service type"
+                },
+                "openshiftRoute": {
+                    "type": "object",
+                    "title": "Expose route on OpenShift",
+                    "description": "Enabled by default",
+                    "required": [
+                        "enabled",
+                        "tls"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "title": "Enabled"
+                        },
+                        "host": {
+                            "type": "string",
+                            "title": "Host of the route"
+                        },
+                        "path": {
+                            "type": "string",
+                            "title": "path of the route"
+                        },
+                        "wildcardPolicy": {
+                            "type": "string",
+                            "title": "wildcard policy"
+                        },
+                        "tls": {
+                            "type": "object",
+                            "title": "TLS configuration",
+                            "description": "To enable HTTPS (enabled by default).",
+                            "required": [
+                                "enabled"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "title": "Enabled"
+                                },
+                                "termination": {
+                                    "type": "string",
+                                    "title": "Termination"
+                                },
+                                "insecureEdgeTerminationPolicy": {
+                                    "type": "string",
+                                    "title": "insecureEdgeTerminationPolicy"
+                                }
+                            },
+                            "additionalProperties": true
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "ingress": {
+                    "type": "object",
+                    "title": "Ingress configuration",
+                    "description": "For routing on Kubernetes (disabled by default)",
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": true
+        },
+        "serviceAccount": {
+            "type": "object",
+            "title": "Service Account",
+            "description": "Configure the Kubernetes service account running the application (anyuid by default for OpenShift)",
+            "additionalProperties": true
+        },
+        "storage": {
+            "type": "object",
+            "title": "Persistent storage",
+            "description": "Configure the persistent volume to store your data.",
+            "required": [
+                "size",
+                "mountPath"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled"
+                },
+                "size": {
+                    "type": "string",
+                    "title": "Size of the persistent storage",
+                    "description": "Size of the persistent storage created"
+                },
+                "mountPath": {
+                    "type": "string",
+                    "title": "Mount path of the persistent storage",
+                    "description": "mount path of the persistent storage, usually in the home folder"
+                },
+                "workingDir": {
+                    "type": "string",
+                    "title": "Folder used as working directory",
+                    "description": "Folder used as working directory and workspace by JupyterLab, let empty to use the mountPath"
+                },
+                "enableDshm": {
+                    "type": "boolean",
+                    "title": "Mount the distributed shared memory",
+                    "description": "Can increase performance of some operation. Mount /dev/shm on memory"
+                },
+                "extraStorage": {
+                    "type": "array",
+                    "title": "Extra storages",
+                    "description": "Additional persistent volumes to mount to the container.",
+                    "additionalItems": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "name"
+                        },
+                        "mountPath": {
+                            "type": "string",
+                            "title": "mountPath"
+                        },
+                        "readOnly": {
+                            "type": "boolean",
+                            "title": "readOnly"
+                        }
+                        }
+                    }
+                }
+            },
+            "additionalProperties": true
+        },
+        "extraEnvs": {
+            "type": "array",
+            "title": "Environment variables",
+            "description": "Add environment variables to pass to the container.",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "value"
+                }
+                }
+            }
+        },
+        "resources": {
+            "type": "object",
+            "title": "Resources limits",
+            "description": "Set limits for Memory, CPU, or GPU",
+            "additionalProperties": true,
+            "properties": {
+                "limits": {
+                    "type": "object",
+                    "title": "Limits",
+                    "additionalProperties": true,
+                    "properties": {
+                        "memory": {
+                            "type": "string",
+                            "title": "Memory"
+                        },
+                        "cpu": {
+                            "type": "string",
+                            "title": "CPU"
+                        },
+                        "nvidia.com/gpu": {
+                            "type": "integer",
+                            "title": "GPU",
+                            "description": "You need to first request GPU quota to enable GPU for your JupyterLab"
+                        }
+                    }
+                },
+                "requests": {
+                    "type": "object",
+                    "title": "Requests",
+                    "additionalProperties": true,
+                    "properties": {
+                        "memory": {
+                            "type": "string",
+                            "title": "Memory"
+                        },
+                        "cpu": {
+                            "type": "string",
+                            "title": "CPU"
+                        },
+                        "nvidia.com/gpu": {
+                            "type": "integer",
+                            "title": "GPU",
+                            "description": "You need to first request GPU quota to enable GPU for your JupyterLab"
+                        }
+                    }
+                }
+            }
+        },
+        "imagePullSecrets": {
+            "type": "array",
+            "title": "imagePullSecrets",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/imagePullSecrets/items"
+            }
+        },
+        "podAnnotations": {
+            "type": "object",
+            "title": "Pod Annotations",
+            "additionalProperties": true
+        },
+        "podSecurityContext": {
+            "type": "object",
+            "title": "Pod Security Context",
+            "additionalProperties": true
+        },
+        "securityContext": {
+            "type": "object",
+            "title": "Security Context"
+        },
+        "nodeSelector": {
+            "type": "object",
+            "title": "Node Selector",
+            "additionalProperties": true
+        },
+        "tolerations": {
+            "type": "array",
+            "title": "Tolerations",
+            "default": [],
+            "examples": [
+                []
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/tolerations/items"
+            }
+        },
+        "affinity": {
+            "type": "object",
+            "title": "Affinity",
+            "additionalProperties": true
+        }
+    }
+}

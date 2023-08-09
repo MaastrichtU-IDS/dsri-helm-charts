@@ -92,6 +92,9 @@ helm install jupyterlab-gpu dsri/jupyterlab \
   --set storage.workingDir=/workspace \
   --set resources.requests."nvidia\.com/gpu"=1 \
   --set resources.limits."nvidia\.com/gpu"=1 \
+  --set tolerations[0].effect=NoSchedule \
+  --set tolerations[0].key=nvidia.com/gpu \
+  --set tolerations[0].operator=Exists \
   --set password=changeme
 ```
 
@@ -154,12 +157,12 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | gitEmail | string | `"default@maastrichtuniversity.nl"` |  |
 | gitName | string | `"Default user"` |  |
 | gitUrl | string | `""` |  |
-| image.addJupyterConfig | bool | `false` |  Mount a jupyter_notebook_config.py to automatically clone $GIT_URL and install requirements on startup, this overrides command |
+| image.addJupyterConfig | bool | `false` |  |
 | image.command | list | `[]` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/jupyterlab"` |  |
 | image.tag | string | `"latest"` |  |
-| imagePullSecrets | list | `[]` |  supplementalGroups: - 100 |
+| imagePullSecrets | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
 | password | string | `""` |  |
 | podAnnotations | object | `{}` |  |
@@ -184,9 +187,10 @@ The following table lists the configurable parameters of the jupyterlab chart an
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
 | serviceAccount.sudoEnabled | bool | `true` |  |
+| storage.enableDshm | bool | `true` |  |
 | storage.enabled | bool | `true` |  |
 | storage.extraStorage | list | `[]` |  |
-| storage.mountPath | string | `"/home/jovyan/work"` |  |
+| storage.mountPath | string | `"/home/jovyan/work/persistent"` |  |
 | storage.size | string | `"5Gi"` |  |
-| storage.workingDir | string | `""` |  |
+| storage.workingDir | string | `"/home/jovyan/work"` |  |
 | tolerations | list | `[]` |  |

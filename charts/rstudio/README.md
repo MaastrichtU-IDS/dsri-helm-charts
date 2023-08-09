@@ -72,9 +72,9 @@ The following table lists the configurable parameters of the rstudio chart and t
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/rstudio"` |  |
 | image.tag | string | `"latest"` |  |
-| imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
+| imagePullSecrets | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
-| openblasNumThreads | int | `1` |  Restricting the number of thread allocated to OpenBLAS can speed up computations using OpenBLAS (leave empty for default 64) |
+| openblasNumThreads | int | `1` |  |
 | password | string | `""` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
@@ -98,6 +98,8 @@ The following table lists the configurable parameters of the rstudio chart and t
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `"anyuid"` |  |
+| serviceAccount.sudoEnabled | bool | `true` |  |
+| storage.enableDshm | bool | `true` |  |
 | storage.enabled | bool | `true` |  |
 | storage.mountPath | string | `"/home/rstudio"` |  |
 | storage.size | string | `"5Gi"` |  |

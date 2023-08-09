@@ -1,0 +1,12 @@
+
+{{- if .Values.chatConf }}
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "libre-chat.fullname" . }}
+  labels:
+    {{- include "libre-chat.labels" . | nindent 4 }}
+data:
+  chat.yml: |
+{{ toYaml .Values.chatConf | nindent 4 }}
+{{- end }}

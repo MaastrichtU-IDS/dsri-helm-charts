@@ -1,0 +1,25 @@
+apiVersion: v2
+name: libre-chat
+description: A Helm chart to deploy JupyterLab on CPU and GPU in OpenShift and Kubernetes clusters. Works well with images based on the jupyter/docker-stacks, and images using the root user
+type: application
+home: https://artifacthub.io/packages/helm/dsri-helm-charts/libre-chat
+icon: https://raw.github.com/vemonet/libre-chat/main/docs/docs/assets/logo.png
+
+version: 0.1.0
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+
+appVersion: 0.0.6
+keywords:
+  - Chatbot
+  - LLM
+  - self-hosted
+  - Llama 2
+  - LangChain
+maintainers:
+  - email: vincent.emonet@gmail.com
+    name: Vincent Emonet
+
+annotations:
+  artifacthub.io/operator: "false"

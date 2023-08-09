@@ -51,12 +51,12 @@ The following table lists the configurable parameters of the code-server chart a
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/maastrichtu-ids/code-server"` |  |
 | image.tag | string | `"latest"` |  |
-| imagePullSecrets | list | `[]` |    drop:   - ALL readOnlyRootFilesystem: true runAsNonRoot: true runAsUser: 1000 |
+| imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.openshiftHost.clusterUrl | string | `"apps.dsri2.unimaas.nl"` |  |
 | ingress.openshiftHost.project | string | `"workspace-vemonet"` |  |
-| ingress.tls | list | `[]` |    - host: "code-server-workspace-vemonet.apps.dsri2.unimaas.nl"     paths: ["/"] |
+| ingress.tls | list | `[]` |  |
 | nodeSelector | object | `{}` |  |
 | openshiftRoute.enabled | bool | `true` |  |
 | openshiftRoute.host | string | `""` |  |

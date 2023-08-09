@@ -41,16 +41,24 @@ Refer to the `README.md` for each application in the `charts` folder for more de
 
 ## Develop
 
+Install:
+
+```bash
+pipx install yamllint
+```
+
 Lint to check for errors: 
 
 ```bash
-helm lint charts/jupyterlab
+helm lint charts/*
 yamllint charts/jupyterlab/templates/deployment.yaml
 ```
 
 Test a chart without deploying:
 
 ```bash
+helm install --dry-run --debug ./charts/libre-chat --generate-name
+# You can change some properties on the fly:
 helm install --dry-run --debug ./charts/jupyterlab --set serviceAccount.name=anyuid,openshiftRoute.enabled=true,password=changeme --generate-name
 ```
 
@@ -77,13 +85,13 @@ helm create charts/your-new-chart
 Install [helm-docs](https://github.com/norwoodj/helm-docs) (requires `golang` installed):
 
 ```bash
-GO111MODULE=on go get github.com/norwoodj/helm-docs/cmd/helm-docs
+go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
 ```
 
 Generate a `README.md` for all charts by running `helm-docs` from the root of the git repository:
 
 ```bash
-~/go/bin/helm-docs
+helm-docs
 ```
 
 Automatically generate docs when commiting using pre-commit hooks:
