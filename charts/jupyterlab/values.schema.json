@@ -172,6 +172,11 @@
                     "title": "Mount path of the persistent storage",
                     "description": "mount path of the persistent storage, usually in the home folder"
                 },
+                "storageClass": {
+                    "type": "string",
+                    "title": "Storage class used for persistent volumes",
+                    "description": "The storage class to be used for persistent volumes, let empty to use the cluster default"
+                },
                 "workingDir": {
                     "type": "string",
                     "title": "Folder used as working directory",
